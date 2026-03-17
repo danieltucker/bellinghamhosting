@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellingham Hosting – Local, Solar-Powered Web Hosting in Ferndale, WA</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-dark: #1a3a5c;
+    --sky-mid: #2b6cb0;
+    --sky-bright: #4299e1;
+    --sky-light: #bee3f8;
+    --sky-pale: #ebf8ff;
+    --cloud-white: #ffffff;
+    --sun-gold: #f6d860;
+    --green-solar: #48bb78;
+    --accent-teal: #38b2ac;
+    --text-dark: #1a2e44;
+    --text-mid: #2d5282;
+    --text-light: #4a90b8;
+    --shadow: rgba(26,58,92,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--sky-pale);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,58,92,0.92);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: var(--sky-light);
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--sun-gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    color: var(--sky-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sun-gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0d2b4e 0%, #1a5276 35%, #2980b9 65%, #87ceeb 90%, #d6eaf8 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+  }
+
+  /* animated clouds */
+  .clouds-layer {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.9;
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+  }
+  .c1 { width: 180px; height: 55px; top: 18%; left: -200px; animation: drift1 28s linear infinite; }
+  .c1::before { width: 90px; height: 80px; top: -40px; left: 20px; }
+  .c1::after  { width: 70px; height: 65px; top: -30px; left: 80px; }
+
+  .c2 { width: 140px; height: 45px; top: 30%; left: -160px; animation: drift1 38s linear infinite 5s; opacity: 0.75; }
+  .c2::before { width: 70px; height: 65px; top: -32px; left: 15px; }
+  .c2::after  { width: 55px; height: 55px; top: -25px; left: 60px; }
+
+  .c3 { width: 220px; height: 65px; top: 12%; right: -250px; animation: drift2 32s linear infinite 2s; }
+  .c3::before { width: 100px; height: 90px; top: -48px; left: 25px; }
+  .c3::after  { width: 80px; height: 70px; top: -35px; right: 25px; }
+
+  .c4 { width: 100px; height: 35px; top: 45%; right: -130px; animation: drift2 42s linear infinite 8s; opacity: 0.65; }
+  .c4::before { width: 55px; height: 50px; top: -25px; left: 12px; }
+  .c4::after  { width: 45px; height: 42px; top: -20px; left: 40px; }
+
+  .c5 { width: 160px; height: 50px; top: 55%; left: -190px; animation: drift1 35s linear infinite 12s; opacity: 0.8; }
+  .c5::before { width: 80px; height: 70px; top: -36px; left: 18px; }
+  .c5::after  { width: 65px; height: 58px; top: -28px; left: 70px; }
+
+  @keyframes drift1 { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+  @keyframes drift2 { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
+
+  /* stars */
+  .stars { position: absolute; top: 0; left: 0; right: 0; height: 40%; overflow: hidden; }
+  .star {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  @keyframes twinkle { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+  /* sun / moon */
+  #sky-body {
+    position: absolute;
+    top: 10%; right: 12%;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    transition: all 1.2s ease;
+  }
+  #sky-body.is-sun {
+    background: radial-gradient(circle, #fff9c4, var(--sun-gold));
+    box-shadow: 0 0 0 12px rgba(246,216,96,0.25), 0 0 0 24px rgba(246,216,96,0.12);
+    animation: pulse-sun 4s ease-in-out infinite;
+  }
+  #sky-body.is-moon {
+    background: radial-gradient(circle at 35% 35%, #e8f4fd, #c8dff0);
+    box-shadow: 0 0 0 10px rgba(200,223,240,0.2), 0 0 0 22px rgba(200,223,240,0.08);
+    animation: pulse-moon 6s ease-in-out infinite;
+    /* crescent mask via inner shadow */
+    overflow: hidden;
+  }
+  #sky-body.is-moon::after {
+    content: '';
+    position: absolute;
+    top: -10px; left: 12px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: #0d2b4e;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.3);
+  }
+  /* crater dots on moon */
+  #sky-body.is-moon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 62% 55%, rgba(160,190,210,0.6) 0%, transparent 18%),
+      radial-gradient(circle at 75% 30%, rgba(160,190,210,0.4) 0%, transparent 12%),
+      radial-gradient(circle at 50% 72%, rgba(160,190,210,0.35) 0%, transparent 10%);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  @keyframes pulse-sun {
+    0%,100%{box-shadow:0 0 0 12px rgba(246,216,96,0.25),0 0 0 24px rgba(246,216,96,0.12);}
+    50%{box-shadow:0 0 0 18px rgba(246,216,96,0.3),0 0 0 36px rgba(246,216,96,0.15);}
+  }
+  @keyframes pulse-moon {
+    0%,100%{box-shadow:0 0 0 10px rgba(200,223,240,0.2),0 0 0 22px rgba(200,223,240,0.08);}
+    50%{box-shadow:0 0 0 16px rgba(200,223,240,0.25),0 0 0 32px rgba(200,223,240,0.12);}
+  }
+  /* night hero gradient */
+  .hero.is-night {
+    background: linear-gradient(180deg, #020d1a 0%, #071e3d 35%, #0d3060 65%, #1a4a7a 90%, #2a6090 100%);
+  }
+  .hero.is-night .cloud { opacity: 0.35; }
+  /* moon label badge swap */
+  .hero-badge.badge-night { display: none; }
+  .hero-badge.badge-day { display: inline-flex; }
+  .hero.is-night .hero-badge.badge-night { display: inline-flex; }
+  .hero.is-night .hero-badge.badge-day { display: none; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 0.4rem 1.1rem;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: white;
+    line-height: 1.05;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em { color: var(--sun-gold); font-style: normal; }
+  .hero-sub {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--sky-light);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    max-width: 560px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sun-gold);
+    color: var(--sky-dark);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(246,216,96,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(246,216,96,0.55); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.6); font-size: 0.8rem; text-align: center;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+  .scroll-hint svg { display: block; margin: 0.3rem auto 0; }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    background: var(--sky-light);
+    color: var(--sky-dark);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 50px;
+    margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--sky-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .section-sub {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    max-width: 580px;
+  }
+
+  /* ─── WHY US ─── */
+  .why { background: white; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .why-card {
+    background: var(--sky-pale);
+    border: 2.5px solid var(--sky-light);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .why-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px var(--shadow); }
+  .why-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  .why-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    color: var(--sky-dark);
+    margin-bottom: 0.5rem;
+  }
+  .why-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ─── PRICING ─── */
+  .pricing { background: linear-gradient(160deg, var(--sky-pale) 0%, #d0ecff 100%); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  .plan {
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    border: 3px solid var(--sky-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .plan:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(66,153,225,0.2); }
+  .plan.featured {
+    border-color: var(--sky-bright);
+    background: linear-gradient(160deg, #ebf8ff, #bee3f8 100%);
+  }
+  .plan-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--sky-mid);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+  }
+  .plan-icon { font-size: 3rem; margin-bottom: 0.75rem; display: block; }
+  .plan-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.6rem;
+    color: var(--sky-dark);
+    margin-bottom: 0.25rem;
+  }
+  .plan-who { color: var(--text-light); font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .plan-price {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    color: var(--sky-mid);
+    line-height: 1;
+  }
+  .plan-price sup { font-size: 1.5rem; vertical-align: super; }
+  .plan-price span { font-size: 1rem; color: var(--text-light); }
+  .plan-features { list-style: none; margin: 1.5rem 0 2rem; text-align: left; }
+  .plan-features li {
+    padding: 0.4rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .plan-features li::before { content: '✓'; color: var(--accent-teal); font-weight: 800; }
+  .plan .btn-primary { display: block; text-align: center; }
+
+  /* ─── SERVICES ─── */
+  .services { background: white; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    border: 2.5px solid var(--sky-light);
+    border-radius: 20px;
+    padding: 1.8rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover { border-color: var(--sky-bright); box-shadow: 0 8px 24px var(--shadow); }
+  .service-icon { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
+  .service-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: var(--sky-dark);
+    margin-bottom: 0.4rem;
+  }
+  .service-price {
+    display: inline-block;
+    background: var(--sky-light);
+    color: var(--sky-dark);
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    margin-bottom: 0.6rem;
+  }
+  .service-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ─── CLIENTS ─── */
+  .clients { background: var(--sky-pale); }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .client-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 2.5px solid var(--sky-light);
+    display: flex; flex-direction: column; gap: 0.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .client-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow); }
+  .client-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--sky-dark);
+  }
+  .client-url {
+    color: var(--sky-bright);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .client-url:hover { text-decoration: underline; }
+  .client-tag {
+    display: inline-block;
+    background: var(--sky-light);
+    color: var(--sky-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+  }
+  .client-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ─── FAQ ─── */
+  .faq { background: white; }
+  .faq-list { max-width: 720px; display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item {
+    border: 2.5px solid var(--sky-light);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+  }
+  .faq-item h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem;
+    color: var(--sky-dark);
+    margin-bottom: 0.4rem;
+  }
+  .faq-item p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+  body.is-night .faq { background: #0f1f38; }
+  body.is-night .faq-item { border-color: #1e3d60; }
+  body.is-night .faq-item h3 { color: #bee3f8; }
+  body.is-night .faq-item p { color: #7aa8cc; }
+
+  /* ─── ABOUT / COFFEE ─── */
+  .coffee {
+    background: linear-gradient(135deg, var(--sky-dark) 0%, var(--sky-mid) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .coffee::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+  .coffee .section-inner { position: relative; z-index: 1; }
+  .coffee .section-label { background: rgba(255,255,255,0.2); color: white; }
+  .coffee .section-title { color: white; }
+  .coffee .section-sub { color: var(--sky-light); }
+  .coffee-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .coffee-text h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: white; margin-bottom: 1rem;
+  }
+  .coffee-text p { color: var(--sky-light); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem; }
+  .coffee-illustration {
+    display: flex; justify-content: center; align-items: center;
+    font-size: 10rem;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-18px);} }
+  .solar-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(72,187,120,0.2);
+    border: 2px solid var(--green-solar);
+    color: var(--green-solar);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact { background: white; }
+  .contact-box {
+    background: linear-gradient(135deg, var(--sky-pale), #d0ecff);
+    border: 3px solid var(--sky-light);
+    border-radius: 28px;
+    padding: 3rem;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-box h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    color: var(--sky-dark);
+    margin-bottom: 1rem;
+  }
+  .contact-box p { color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; font-size: 1rem; }
+  .contact-email {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--sky-mid);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .contact-email:hover { color: var(--sky-dark); }
+  .location-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: white;
+    border: 2px solid var(--sky-light);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    color: var(--sky-mid);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--sky-dark);
+    color: var(--sky-light);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--sky-light); font-weight: 700; }
+  .footer-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--sun-gold); }
+
+  /* ─── NIGHT MODE ─── */
+  body.is-night {
+    background: #0a1628;
+    color: #c8dff0;
+    transition: background 1.2s ease, color 1.2s ease;
+  }
+  body.is-night .why { background: #0f1f38; }
+  body.is-night .why-card {
+    background: #152a47;
+    border-color: #1e3d60;
+  }
+  body.is-night .why-card h3 { color: #bee3f8; }
+  body.is-night .why-card p { color: #7aa8cc; }
+  body.is-night .pricing {
+    background: linear-gradient(160deg, #0a1628 0%, #0f2040 100%);
+  }
+  body.is-night .plan {
+    background: #111e35;
+    border-color: #1e3d60;
+  }
+  body.is-night .plan.featured {
+    background: linear-gradient(160deg, #122040, #1a3060);
+    border-color: #2a5080;
+  }
+  body.is-night .plan-name { color: #bee3f8; }
+  body.is-night .plan-features li { color: #a0c4e0; }
+  body.is-night .services { background: #0f1f38; }
+  body.is-night .service-card {
+    border-color: #1e3d60;
+    background: #0a1628;
+  }
+  body.is-night .service-card h3 { color: #bee3f8; }
+  body.is-night .service-card p { color: #7aa8cc; }
+  body.is-night .service-price {
+    background: #1e3d60;
+    color: #bee3f8;
+  }
+  body.is-night .clients { background: #0a1628; }
+  body.is-night .client-card {
+    background: #0f1f38;
+    border-color: #1e3d60;
+  }
+  body.is-night .client-name { color: #bee3f8; }
+  body.is-night .client-card p { color: #7aa8cc; }
+  body.is-night .client-tag {
+    background: #1e3d60;
+    color: #bee3f8;
+  }
+  body.is-night .contact { background: #0f1f38; }
+  body.is-night .contact-box {
+    background: linear-gradient(135deg, #0a1628, #102040);
+    border-color: #1e3d60;
+  }
+  body.is-night .contact-box h2 { color: #bee3f8; }
+  body.is-night .contact-box p { color: #7aa8cc; }
+  body.is-night .location-tag {
+    background: #0a1628;
+    border-color: #1e3d60;
+    color: #7aa8cc;
+  }
+  body.is-night .section-title { color: #bee3f8; }
+  body.is-night .section-sub { color: #7aa8cc; }
+  body.is-night .section-label {
+    background: #1e3d60;
+    color: #bee3f8;
+  }
+  body { transition: background 1.2s ease, color 1.2s ease; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .coffee-layout { grid-template-columns: 1fr; }
+    .coffee-illustration { font-size: 6rem; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">☁️ Bellingham<span>Hosting</span></a>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div id="sky-body" class="is-sun"></div>
+  <div class="clouds-layer">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <div class="cloud c5"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge badge-day">☀️ 100% Solar Powered · Ferndale, WA</div>
+    <div class="hero-badge badge-night">🌙 Solar stored all day keeps us online all night · Ferndale, WA</div>
+    <h1>Your Website,<br><em>Up in the Clouds</em></h1>
+    <p class="hero-sub">Friendly, local web hosting for Whatcom County businesses. Starting at just $5/month.</p>
+    <div class="hero-ctas">
+      <a href="#pricing" class="btn-primary">See Plans →</a>
+      <a href="#contact" class="btn-secondary">Let's Grab Coffee ☕</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    scroll down
+    <svg width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 2v14M2 10l6 8 6-8" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <span class="section-label">Why BellinghamHosting?</span>
+    <h2 class="section-title">Small Scale, Big Heart</h2>
+    <p class="section-sub">We're not a faceless corporation. We're your neighbor in Ferndale who actually picks up the phone.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">☀️</span>
+        <h3>Solar Powered</h3>
+        <p>100% powered by the sun right here in Ferndale, WA. Hosting that's good for your wallet and the planet.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📍</span>
+        <h3>Truly Local</h3>
+        <p>We're based right here in Whatcom County. Your hosting money stays in the community.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">☕</span>
+        <h3>Coffee Meetings</h3>
+        <p>No call center, no ticket queue. Grab a coffee with your host — something no big provider can offer.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💸</span>
+        <h3>Unbeatable Price</h3>
+        <p>Small scale means lower overhead. We pass those savings straight to you. Starting at $3/month.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🤝</span>
+        <h3>Non-Profit Love</h3>
+        <p>Local non-profits get a special rate because communities are built on the work they do.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🏔️</span>
+        <h3>Whatcom County Proud</h3>
+        <p>We know Bellingham, Ferndale, and every business in between. We're part of this community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <span class="section-label">Hosting Plans</span>
+    <h2 class="section-title">Simple, Honest Pricing</h2>
+    <p class="section-sub">No hidden fees, no confusing tiers. Just two straightforward plans for the people of Whatcom County.</p>
+    <div class="pricing-grid">
+      <div class="plan featured">
+        <span class="plan-badge">Most Popular</span>
+        <span class="plan-icon">🏢</span>
+        <div class="plan-name">Business</div>
+        <div class="plan-who">For local businesses</div>
+        <div class="plan-price"><sup>$</sup>5<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>Static site hosting included</li>
+          <li>100% solar-powered servers</li>
+          <li>Hosted in Ferndale, WA</li>
+          <li>Local support (coffee included 😄)</li>
+          <li>Best-effort uptime, see FAQ</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Get Started</a>
+      </div>
+      <div class="plan">
+        <span class="plan-icon">💚</span>
+        <div class="plan-name">Non-Profit</div>
+        <div class="plan-who">For non-profit organizations</div>
+        <div class="plan-price"><sup>$</sup>3<span>/mo</span></div>
+        <ul class="plan-features">
+          <li>Static site hosting included</li>
+          <li>100% solar-powered servers</li>
+          <li>Hosted in Ferndale, WA</li>
+          <li>Local support (coffee included 😄)</li>
+          <li>Best-effort uptime, see FAQ</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Get Started</a>
+      </div>
+    </div>
+    <p style="text-align:center; color:var(--text-light); font-size:0.9rem; margin-top:1.5rem; font-weight:600;">
+      💡 We're small — which means things aren't always perfect, but we're cheap, local, and we genuinely care.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <span class="section-label">Additional Services</span>
+    <h2 class="section-title">Need a Website Too?</h2>
+    <p class="section-sub">We don't just host — we can build your site from scratch, photograph your business, and keep it fresh.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🌐</span>
+        <h3>Simple Website</h3>
+        <span class="service-price">Starting at $200</span>
+        <p>A clean, effective website built for small local businesses. Nothing over-engineered, nothing overpriced.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📸</span>
+        <h3>Photography</h3>
+        <span class="service-price">$35/hour</span>
+        <p>Professional photos of your business, team, or products. Great photos make great websites.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✏️</span>
+        <h3>Edits & Updates</h3>
+        <span class="service-price">$35/hour</span>
+        <p>Need to update your hours, add a new product, or change your menu? We've got you covered after launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="section-inner">
+    <span class="section-label">Happy Clients</span>
+    <h2 class="section-title">Trusted by Whatcom County</h2>
+    <p class="section-sub">Real local businesses, hosted on real local servers.</p>
+    <div class="clients-grid">
+      <div class="client-card">
+        <div>
+          <span class="client-tag">Restaurant</span>
+        </div>
+        <div class="client-name">Supon's</div>
+        <a class="client-url" href="https://supons.com" target="_blank" rel="noopener">supons.com ↗</a>
+        <p>A beloved local eatery bringing great food to Whatcom County — and a website to match.</p>
+      </div>
+      <div class="client-card">
+        <div>
+          <span class="client-tag">Non-Profit / HOA</span>
+        </div>
+        <div class="client-name">Ferndale HOA</div>
+        <a class="client-url" href="https://ferndalehoa.com" target="_blank" rel="noopener">ferndalehoa.com ↗</a>
+        <p>Keeping the Ferndale community connected with a simple, easy-to-navigate community website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Good Questions</h2>
+    <p class="section-sub">Honest answers about how this all works.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What kind of sites do you host?</h3>
+        <p>Static sites only — think HTML, CSS, JavaScript, and image files. No WordPress, no databases, no server-side code. If your site is simple and fast, it's a great fit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's your uptime like?</h3>
+        <p>Honest answer: pretty good, but not guaranteed. This is a small operation run by one person on solar-powered hardware. Servers need updates, hardware occasionally needs attention, and things happen. I'll always let you know in advance when I can, and I'll get things back up as fast as possible. If you need five-nines uptime, a big cloud provider is probably a better fit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens if you go on vacation?</h3>
+        <p>Sites keep running — they don't need me around to stay up. If something breaks while I'm out, I'll respond as soon as I'm back. I'm transparent about this tradeoff and the price reflects it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I move my site away if I want to?</h3>
+        <p>Absolutely. Your files are always yours. I'll hand everything over with no hassle if you ever want to move on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COFFEE SECTION -->
+<section class="coffee" id="about">
+  <div class="section-inner">
+    <div class="coffee-layout">
+      <div class="coffee-text">
+        <span class="section-label">About Us</span>
+        <h2>Let's Grab a Coffee ☕</h2>
+        <p>BellinghamHosting isn't a data center in Virginia or a call center in another country. It's a real person, right here in Ferndale, WA who loves helping local businesses get online.</p>
+        <p>Have a question? Let's meet for coffee. Need to troubleshoot something? I'm a phone call away. You won't find that kind of relationship with AWS or GoDaddy.</p>
+        <div class="solar-badge">
+          ☀️ 100% Solar Powered Hosting
+        </div>
+        <br><br>
+        <a href="#contact" class="btn-primary">Say Hello</a>
+      </div>
+      <div class="coffee-illustration">☁️</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <div style="font-size:3rem;margin-bottom:1rem;">👋</div>
+      <h2>Ready to Get Started?</h2>
+      <p>Whether you want to host your existing site, build a new one, or just ask some questions over coffee — reach out and let's chat.</p>
+      <div class="location-tag">📍 Ferndale, WA · Whatcom County</div>
+      <br>
+      <a class="contact-email" href="mailto:hello@bellinghamhosting.com">hello@bellinghamhosting.com</a>
+      <a href="mailto:hello@bellinghamhosting.com" class="btn-primary">Send a Message →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
+  <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2025 BellinghamHosting.com · <a href="#">bellinghamhosting.com</a></p>
+</footer>
+
+<script>
+  // Generate twinkling stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.width = s.style.height = (Math.random() * 2.5 + 1.5) + 'px';
+    starsEl.appendChild(s);
+  }
+
+  // Day / Night: switch sun to moon between 8pm and 6am (local time)
+  function applyDayNight() {
+    const hour = new Date().getHours();
+    const isNight = hour >= 20 || hour < 6;
+    const hero = document.querySelector('.hero');
+    const skyBody = document.getElementById('sky-body');
+    if (isNight) {
+      hero.classList.add('is-night');
+      document.body.classList.add('is-night');
+      skyBody.classList.remove('is-sun');
+      skyBody.classList.add('is-moon');
+    } else {
+      hero.classList.remove('is-night');
+      document.body.classList.remove('is-night');
+      skyBody.classList.remove('is-moon');
+      skyBody.classList.add('is-sun');
+    }
+  }
+  applyDayNight();
+  // Re-check every minute in case page stays open across the threshold
+  setInterval(applyDayNight, 60000);
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
