@@ -375,6 +375,85 @@
   .plan-features li::before { content: '✓'; color: var(--accent-teal); font-weight: 800; }
   .plan .btn-primary { display: block; text-align: center; }
 
+  /* ─── PLANET ─── */
+  .planet {
+    background: linear-gradient(180deg, #0c3318 0%, #1a5c33 45%, #2a804a 75%, #3aa05e 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 1.5rem 10rem;
+  }
+  .planet .section-inner { position: relative; z-index: 2; }
+  .planet .section-label { background: rgba(255,255,255,0.18); color: #b8f0cc; }
+  .planet .section-title { color: white; }
+  .planet .section-sub { color: #a0dbb8; }
+  .planet-pledge {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+  }
+  .pledge-stat {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(6px);
+  }
+  .pledge-stat .stat-icon { font-size: 2.8rem; display: block; margin-bottom: 0.6rem; }
+  .pledge-stat h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.35rem;
+    color: white;
+    margin-bottom: 0.4rem;
+  }
+  .pledge-stat p { color: #a0dbb8; font-size: 0.9rem; line-height: 1.65; }
+  .stripe-climate-wrap {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .stripe-climate-wrap iframe { border: none; border-radius: 10px; }
+  /* hills */
+  .planet-hills {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+    pointer-events: none;
+  }
+  .hill {
+    position: absolute; border-radius: 50%; bottom: -60px;
+  }
+  .hill1 { width: 700px; height: 220px; background: #1d6636; left: -120px; }
+  .hill2 { width: 600px; height: 200px; background: #236e3d; right: -100px; }
+  .hill3 { width: 900px; height: 180px; background: #2a8048; left: 50%; transform: translateX(-50%); bottom: -70px; }
+  /* trees */
+  .planet-trees {
+    position: absolute; bottom: 50px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 2%;
+    pointer-events: none;
+  }
+  .planet-trees span {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+    animation: tree-sway 4s ease-in-out infinite;
+    transform-origin: bottom center;
+    display: inline-block;
+  }
+  .planet-trees span:nth-child(2) { font-size: 2.8rem; animation-delay: 0.8s; }
+  .planet-trees span:nth-child(3) { font-size: 4.2rem; animation-delay: 1.6s; }
+  .planet-trees span:nth-child(4) { font-size: 3rem;   animation-delay: 0.4s; }
+  .planet-trees span:nth-child(5) { font-size: 4rem;   animation-delay: 2.2s; }
+  .planet-trees span:nth-child(6) { font-size: 2.6rem; animation-delay: 1.1s; }
+  .planet-trees span:nth-child(7) { font-size: 3.8rem; animation-delay: 1.9s; }
+  .planet-trees span:nth-child(8) { font-size: 3.2rem; animation-delay: 0.6s; }
+  @keyframes tree-sway {
+    0%,100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
+  }
+  @media (max-width: 700px) {
+    .planet-pledge { grid-template-columns: 1fr; }
+    .planet-trees span { font-size: 2.2rem; }
+  }
+
   /* ─── SERVICES ─── */
   .services { background: white; }
   .services-grid {
@@ -667,8 +746,8 @@
     <div class="cloud c5"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge badge-day">☀️ 100% Solar Powered · Ferndale, WA</div>
-    <div class="hero-badge badge-night">🌙 Solar stored all day keeps us online all night · Ferndale, WA</div>
+    <div class="hero-badge badge-day">☀️ Solar-Powered Hosting · Ferndale, WA</div>
+    <div class="hero-badge badge-night">🌙 On grid tonight · Solar offsets it overall · Ferndale, WA</div>
     <h1>Your Website,<br><em>Up in the Clouds</em></h1>
     <p class="hero-sub">Friendly, local web hosting for Whatcom County businesses. Starting at just $5/month for non-profits.</p>
     <div class="hero-ctas">
@@ -692,7 +771,7 @@
       <div class="why-card">
         <span class="why-icon">☀️</span>
         <h3>Solar Powered</h3>
-        <p>100% powered by the sun right here in Ferndale, WA. Hosting that's good for your wallet and the planet.</p>
+        <p>Our panels produce enough energy to fully offset everything we use, 24/7. During the day we run directly on solar — we're adding batteries to close the loop at night too.</p>
       </div>
       <div class="why-card">
         <span class="why-icon">📍</span>
@@ -763,6 +842,45 @@
     <p style="text-align:center; color:var(--text-light); font-size:0.9rem; margin-top:1.5rem; font-weight:600;">
       💡 We're small — which means things aren't always perfect, but we're cheap, local, and we genuinely care.
     </p>
+  </div>
+</section>
+
+<!-- PLANET / GREEN PLEDGE -->
+<section class="planet" id="planet">
+  <div class="section-inner">
+    <span class="section-label">Our Commitment</span>
+    <h2 class="section-title">Good for Your Business, Good for the Planet</h2>
+    <p class="section-sub">Every site we host is powered by solar — directly during the day, and offset by our surplus solar production at night. Every payment also contributes to pulling CO₂ out of the atmosphere.</p>
+    <div class="planet-pledge">
+      <div class="pledge-stat">
+        <span class="stat-icon">☀️</span>
+        <h3>100% Solar Powered</h3>
+        <p>Our servers run entirely on solar energy generated right here in Ferndale, WA. Zero grid power, zero guilt.</p>
+      </div>
+      <div class="pledge-stat">
+        <span class="stat-icon">🌿</span>
+        <h3>1.5% to Carbon Removal</h3>
+        <p>We contribute 1.5% of every payment to remove CO₂ from the atmosphere through Stripe Climate.</p>
+      </div>
+    </div>
+    <div class="stripe-climate-wrap">
+      <iframe src="https://climate.stripe.com/badge/ApYgxH?theme=dark&size=small&locale=en-US" width="200" height="52" scrolling="no" title="Stripe Climate Member"></iframe>
+    </div>
+  </div>
+  <div class="planet-hills">
+    <div class="hill hill1"></div>
+    <div class="hill hill2"></div>
+    <div class="hill hill3"></div>
+  </div>
+  <div class="planet-trees">
+    <span>🌲</span>
+    <span>🌳</span>
+    <span>🌲</span>
+    <span>🌲</span>
+    <span>🌳</span>
+    <span>🌲</span>
+    <span>🌳</span>
+    <span>🌲</span>
   </div>
 </section>
 
