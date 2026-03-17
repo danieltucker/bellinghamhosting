@@ -571,6 +571,21 @@
     animation: float 4s ease-in-out infinite;
   }
   @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-18px);} }
+  .btn-linkedin {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    line-height: 1;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-linkedin:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
   .solar-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: rgba(72,187,120,0.2);
@@ -603,7 +618,8 @@
   .contact-box p { color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; font-size: 1rem; }
   .contact-email {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    word-break: break-all;
     color: var(--sky-mid);
     text-decoration: none;
     display: block;
@@ -942,7 +958,11 @@
     <div class="faq-list">
       <div class="faq-item">
         <h3>What kind of sites do you host?</h3>
-        <p>Static sites only — think HTML, CSS, JavaScript, and image files. No WordPress, no databases, no server-side code. If your site is simple and fast, it's a great fit.</p>
+        <p>Simple informational sites — the kind that show your hours, services, photos, and contact info. If your site doesn't have a login, a shopping cart, or a blog you update yourself, it's probably a great fit. Not sure? Just ask.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What kind of sites can you build?</h3>
+        <p>Pretty much anything — from simple one-page business sites to polished multi-page experiences. The site you're looking at right now was built here, and so was <a class="client-url" href="https://supons.com" target="_blank" rel="noopener">supons.com</a>. With 20 years of experience working with everyone from local Whatcom County businesses to enterprise clients like Microsoft, Sony, and Adobe, there's not much we haven't tackled. If you have something in mind, reach out and let's talk through it.</p>
       </div>
       <div class="faq-item">
         <h3>What's your uptime like?</h3>
@@ -965,15 +985,18 @@
   <div class="section-inner">
     <div class="coffee-layout">
       <div class="coffee-text">
-        <span class="section-label">About Us</span>
+        <span class="section-label">About</span>
         <h2>Let's Grab a Coffee ☕</h2>
-        <p>BellinghamHosting isn't a data center in Virginia or a call center in another country. It's a real person, right here in Ferndale, WA who loves helping local businesses get online.</p>
-        <p>Have a question? Let's meet for coffee. Need to troubleshoot something? I'm a phone call away. You won't find that kind of relationship with AWS or GoDaddy.</p>
+        <p>BellinghamHosting is me — I'm Daniel Tucker, a web developer based in Ferndale, WA with 20 years of experience. I've built everything from simple local business sites to large-scale projects for companies like Microsoft, Sony, and Adobe.</p>
+        <p>These days I'm focused on what I love most: helping small businesses in Whatcom County get online without the runaround. No call centers, no ticket queues. Have a question? Let's grab a coffee. Need something fixed? I'm a phone call away.</p>
         <div class="solar-badge">
-          ☀️ 100% Solar Powered Hosting
+          ☀️ Solar-Offset Hosting
         </div>
         <br><br>
-        <a href="#contact" class="btn-primary">Say Hello</a>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+          <a href="#contact" class="btn-primary">Say Hello</a>
+          <a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener" class="btn-linkedin">Daniel's LinkedIn →</a>
+        </div>
       </div>
       <div class="coffee-illustration">☁️</div>
     </div>
@@ -999,6 +1022,7 @@
 <footer>
   <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
   <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
+  <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener" style="color:var(--sky-light);font-weight:700;opacity:0.8;">Daniel's LinkedIn ↗</a></p>
   <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2025 BellinghamHosting.com · <a href="#">bellinghamhosting.com</a></p>
 </footer>
 
