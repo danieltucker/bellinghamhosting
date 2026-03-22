@@ -598,6 +598,32 @@
     margin-top: 0.5rem;
   }
 
+  /* ─── ONLINE TEASER ─── */
+  .online-teaser { background: linear-gradient(135deg, var(--sky-dark) 0%, var(--sky-mid) 100%); }
+  .online-teaser .section-label { background: rgba(255,255,255,0.2); color: white; }
+  .online-teaser .section-title { color: white; }
+  .online-teaser p { color: var(--sky-light); line-height: 1.7; }
+  .online-teaser-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .online-teaser-points { display: flex; flex-direction: column; gap: 1.5rem; }
+  .teaser-point {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+  }
+  .teaser-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .teaser-point strong { display: block; color: white; font-size: 1rem; margin-bottom: 0.2rem; }
+  .teaser-point p { font-size: 0.9rem; margin: 0; color: var(--sky-light); }
+  @media (max-width: 700px) { .online-teaser-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
   /* ─── CONTACT ─── */
   .contact { background: white; }
   .contact-box {
@@ -715,6 +741,7 @@
     border-color: #1e3d60;
     color: #7aa8cc;
   }
+  body.is-night .online-teaser { background: linear-gradient(135deg, #071428 0%, #0d2040 100%); }
   body.is-night .section-title { color: #bee3f8; }
   body.is-night .section-sub { color: #7aa8cc; }
   body.is-night .section-label {
@@ -762,10 +789,10 @@
     <div class="hero-badge badge-day">☀️ Solar-Powered Hosting · Ferndale, WA</div>
     <div class="hero-badge badge-night">🌙 On grid tonight · Solar offsets it overall · Ferndale, WA</div>
     <h1>Your Website,<br><em>Up in the Clouds</em></h1>
-    <p class="hero-sub">Friendly, local web hosting for Whatcom County businesses. Starting at just $5/month for non-profits.</p>
+    <p class="hero-sub">Need a website built? Need somewhere to host it? We do both, right here in Whatcom County.</p>
     <div class="hero-ctas">
-      <a href="#pricing" class="btn-primary">See Plans →</a>
-      <a href="#about" class="btn-secondary">Let's Grab Coffee ☕</a>
+      <a href="web-design.html" class="btn-primary">Build My Website →</a>
+      <a href="#pricing" class="btn-secondary">Just Need Hosting</a>
     </div>
   </div>
   <div class="scroll-hint">
@@ -908,8 +935,8 @@
 <section class="services" id="services">
   <div class="section-inner">
     <span class="section-label">Web Design &amp; Services</span>
-    <h2 class="section-title">Need a Website Too?</h2>
-    <p class="section-sub">With 20 years of experience building sites for everyone from local Whatcom County businesses to enterprise clients like Microsoft, Sony, and Adobe. We know how to build something that works. <a href="web-design.html" style="color:var(--sky-bright);font-weight:700;">See how the process works →</a></p>
+    <h2 class="section-title">Your Business Deserves a Great Website</h2>
+    <p class="section-sub">With 20 years of experience building sites for local Whatcom County businesses and enterprise clients like Microsoft, Sony, and Adobe, we know what makes a website actually work for a small business. <a href="web-design.html" style="color:var(--sky-mid);font-weight:700;">See how the process works →</a></p>
     <div class="services-grid">
       <div class="service-card">
         <span class="service-icon">🌐</span>
@@ -946,7 +973,7 @@
         </div>
         <div class="client-name">Supon's</div>
         <a class="client-url" href="https://supons.com" target="_blank" rel="noopener">supons.com ↗</a>
-        <p>A beloved local eatery A beloved local eatery bringing great food to Whatcom County, with a website to match.</p>
+        <p>A beloved local eatery bringing great food to Whatcom County, with a website to match.</p>
       </div>
       <div class="client-card">
         <div>
@@ -955,6 +982,43 @@
         <div class="client-name">Ferndale HOA</div>
         <a class="client-url" href="https://ferndalehoa.com" target="_blank" rel="noopener">ferndalehoa.com ↗</a>
         <p>Keeping the Ferndale community connected with a simple, easy-to-navigate community website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONLINE TEASER -->
+<section class="online-teaser">
+  <div class="section-inner">
+    <div class="online-teaser-inner">
+      <div class="online-teaser-text">
+        <span class="section-label">No Website Yet?</span>
+        <h2 class="section-title">If People Can't Find You Online, They'll Find Someone Else</h2>
+        <p>Most people search online before they call, visit, or buy. If your business isn't there, you're invisible to them. The good news? It doesn't have to be complicated or expensive.</p>
+        <a href="web-presence.html" class="btn-primary" style="display:inline-block;margin-top:1rem;">Why Your Business Needs a Website →</a>
+      </div>
+      <div class="online-teaser-points">
+        <div class="teaser-point">
+          <span class="teaser-icon">🔍</span>
+          <div>
+            <strong>People are searching for you right now</strong>
+            <p>Whether it's your hours, your menu, or your phone number, customers look online first.</p>
+          </div>
+        </div>
+        <div class="teaser-point">
+          <span class="teaser-icon">📱</span>
+          <div>
+            <strong>Facebook isn't enough</strong>
+            <p>You don't own your Facebook page. A website is yours, always, no algorithm required.</p>
+          </div>
+        </div>
+        <div class="teaser-point">
+          <span class="teaser-icon">💰</span>
+          <div>
+            <strong>Less than you think</strong>
+            <p>A professional site starting at $200, and hosting for $10 a month. That's less than a tank of gas.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

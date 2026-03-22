@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Business Needs a Website – Bellingham Hosting</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-dark: #1a3a5c;
+    --sky-mid: #2b6cb0;
+    --sky-bright: #4299e1;
+    --sky-light: #bee3f8;
+    --sky-pale: #ebf8ff;
+    --sun-gold: #f6d860;
+    --green-solar: #48bb78;
+    --accent-teal: #38b2ac;
+    --text-dark: #1a2e44;
+    --text-mid: #2d5282;
+    --text-light: #4a90b8;
+    --shadow: rgba(26,58,92,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--sky-pale);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,58,92,0.92);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: var(--sky-light);
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--sun-gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a {
+    color: var(--sky-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sun-gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 70vh;
+    background: linear-gradient(180deg, #1a6fa8 0%, #2e8fd4 35%, #4daee8 65%, #87ceeb 90%, #d6eaf8 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+  }
+  .clouds-layer { position: absolute; inset: 0; pointer-events: none; }
+  .cloud { position: absolute; background: white; border-radius: 50px; opacity: 0.9; }
+  .cloud::before, .cloud::after { content: ''; position: absolute; background: white; border-radius: 50%; }
+  .c1 { width: 180px; height: 55px; top: 18%; left: -200px; animation: drift1 28s linear infinite; }
+  .c1::before { width: 90px; height: 80px; top: -40px; left: 20px; }
+  .c1::after  { width: 70px; height: 65px; top: -30px; left: 80px; }
+  .c2 { width: 140px; height: 45px; top: 40%; left: -160px; animation: drift1 38s linear infinite 5s; opacity: 0.75; }
+  .c2::before { width: 70px; height: 65px; top: -32px; left: 15px; }
+  .c2::after  { width: 55px; height: 55px; top: -25px; left: 60px; }
+  .c3 { width: 220px; height: 65px; top: 20%; right: -250px; animation: drift2 32s linear infinite 2s; }
+  .c3::before { width: 100px; height: 90px; top: -48px; left: 25px; }
+  .c3::after  { width: 80px; height: 70px; top: -35px; right: 25px; }
+  @keyframes drift1 { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+  @keyframes drift2 { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
+
+  .stars { position: absolute; top: 0; left: 0; right: 0; height: 60%; overflow: hidden; }
+  .star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+  #sky-body {
+    position: absolute; top: 10%; right: 12%;
+    width: 90px; height: 90px; border-radius: 50%;
+    transition: all 1.2s ease;
+  }
+  #sky-body.is-sun {
+    background: radial-gradient(circle, #fff9c4, var(--sun-gold));
+    box-shadow: 0 0 0 12px rgba(246,216,96,0.25), 0 0 0 24px rgba(246,216,96,0.12);
+    animation: pulse-sun 4s ease-in-out infinite;
+  }
+  #sky-body.is-moon {
+    background: radial-gradient(circle at 35% 35%, #e8f4fd, #c8dff0);
+    box-shadow: 0 0 0 10px rgba(200,223,240,0.2), 0 0 0 22px rgba(200,223,240,0.08);
+    animation: pulse-moon 6s ease-in-out infinite;
+    overflow: hidden;
+  }
+  #sky-body.is-moon::after {
+    content: ''; position: absolute; top: -10px; left: 12px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: #0d2b4e; box-shadow: inset 0 0 12px rgba(0,0,0,0.3);
+  }
+  #sky-body.is-moon::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 62% 55%, rgba(160,190,210,0.6) 0%, transparent 18%),
+      radial-gradient(circle at 75% 30%, rgba(160,190,210,0.4) 0%, transparent 12%),
+      radial-gradient(circle at 50% 72%, rgba(160,190,210,0.35) 0%, transparent 10%);
+    border-radius: 50%; z-index: 1;
+  }
+  @keyframes pulse-sun {
+    0%,100%{box-shadow:0 0 0 12px rgba(246,216,96,0.25),0 0 0 24px rgba(246,216,96,0.12);}
+    50%{box-shadow:0 0 0 18px rgba(246,216,96,0.3),0 0 0 36px rgba(246,216,96,0.15);}
+  }
+  @keyframes pulse-moon {
+    0%,100%{box-shadow:0 0 0 10px rgba(200,223,240,0.2),0 0 0 22px rgba(200,223,240,0.08);}
+    50%{box-shadow:0 0 0 16px rgba(200,223,240,0.25),0 0 0 32px rgba(200,223,240,0.12);}
+  }
+  .hero.is-night {
+    background: linear-gradient(180deg, #020d1a 0%, #071e3d 35%, #0d3060 65%, #1a4a7a 90%, #2a6090 100%);
+  }
+  .hero.is-night .cloud { opacity: 0.35; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 2rem;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: white; line-height: 1.05;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 em { color: var(--sun-gold); font-style: normal; }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--sky-light); font-weight: 600;
+    margin-bottom: 2rem; max-width: 560px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sun-gold); color: var(--sky-dark);
+    font-family: 'Fredoka One', cursive; font-size: 1.1rem;
+    padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 14px rgba(246,216,96,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; line-height: 1;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(246,216,96,0.55); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.5);
+    color: white; font-family: 'Fredoka One', cursive; font-size: 1.1rem;
+    padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none;
+    backdrop-filter: blur(4px); transition: background 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; line-height: 1;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block; background: var(--sky-light); color: var(--sky-dark);
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.3rem 0.9rem;
+    border-radius: 50px; margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--sky-dark); margin-bottom: 0.5rem; line-height: 1.1;
+  }
+  .section-sub {
+    color: var(--text-light); font-size: 1.05rem; font-weight: 600;
+    margin-bottom: 3rem; max-width: 620px;
+  }
+
+  /* ─── SCENARIOS ─── */
+  .scenarios { background: white; }
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .scenario-card {
+    background: var(--sky-pale);
+    border: 2.5px solid var(--sky-light);
+    border-radius: 20px; padding: 2rem 1.5rem;
+  }
+  .scenario-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+  .scenario-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem; color: var(--sky-dark); margin-bottom: 0.5rem;
+  }
+  .scenario-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.65; }
+
+  /* ─── OBJECTIONS ─── */
+  .objections { background: linear-gradient(160deg, var(--sky-pale) 0%, #d0ecff 100%); }
+  .objections-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 780px; }
+  .objection {
+    background: white;
+    border-radius: 20px;
+    border: 2.5px solid var(--sky-light);
+    padding: 1.8rem 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+  .objection-icon { font-size: 2rem; }
+  .objection h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem; color: var(--sky-dark); margin-bottom: 0.4rem;
+  }
+  .objection p { color: var(--text-light); font-size: 0.95rem; line-height: 1.65; }
+
+  /* ─── WHAT IT DOES ─── */
+  .what-it-does { background: white; }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .benefit {
+    background: var(--sky-pale);
+    border: 2.5px solid var(--sky-light);
+    border-radius: 20px; padding: 1.8rem 1.5rem; text-align: center;
+  }
+  .benefit-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .benefit h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem; color: var(--sky-dark); margin-bottom: 0.4rem;
+  }
+  .benefit p { color: var(--text-light); font-size: 0.9rem; line-height: 1.6; }
+
+  /* ─── COST SECTION ─── */
+  .cost { background: linear-gradient(135deg, var(--sky-dark) 0%, var(--sky-mid) 100%); }
+  .cost .section-label { background: rgba(255,255,255,0.2); color: white; }
+  .cost .section-title { color: white; }
+  .cost .section-sub { color: var(--sky-light); }
+  .cost-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .cost-text p { color: var(--sky-light); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1rem; }
+  .cost-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .cost-card {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 16px; padding: 1.4rem 1.6rem;
+    display: flex; align-items: center; gap: 1.2rem;
+  }
+  .cost-card-icon { font-size: 2rem; flex-shrink: 0; }
+  .cost-card strong { display: block; color: white; font-size: 1.05rem; }
+  .cost-card span { color: var(--sky-light); font-size: 0.9rem; }
+  @media (max-width: 700px) { .cost-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: var(--sun-gold);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .cta-band h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--sky-dark); margin-bottom: 0.75rem;
+  }
+  .cta-band p { color: var(--sky-dark); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.8rem; opacity: 0.8; }
+  .cta-band .btn-dark {
+    background: var(--sky-dark); color: white;
+    font-family: 'Fredoka One', cursive; font-size: 1.1rem;
+    padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none;
+    display: inline-flex; align-items: center; line-height: 1;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(26,58,92,0.3);
+  }
+  .cta-band .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,58,92,0.4); }
+  .cta-band-links { margin-top: 1.2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cta-band-links a { color: var(--sky-dark); font-weight: 700; font-size: 0.95rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--sky-dark); color: var(--sky-light);
+    text-align: center; padding: 2rem; font-size: 0.9rem;
+  }
+  footer a { color: var(--sky-light); font-weight: 700; }
+  .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: white; margin-bottom: 0.5rem; }
+  .footer-logo span { color: var(--sun-gold); }
+
+  @media (max-width: 700px) {
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">☁️ Bellingham<span>Hosting</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="web-design.html">Web Design</a></li>
+    <li><a href="index.html#clients">Clients</a></li>
+    <li><a href="index.html#contact">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div id="sky-body" class="is-sun"></div>
+  <div class="clouds-layer">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Is Your Business<br><em>Invisible Online?</em></h1>
+    <p class="hero-sub">When people in Whatcom County search for what you do, do they find you? If not, here's why that matters and what we can do about it.</p>
+    <div class="hero-ctas">
+      <a href="web-design.html" class="btn-primary">Build My Website →</a>
+      <a href="index.html#contact" class="btn-secondary">Let's Talk</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="scenarios">
+  <div class="section-inner">
+    <span class="section-label">The Reality</span>
+    <h2 class="section-title">This Happens Every Day</h2>
+    <p class="section-sub">Here are three things that are probably happening right now with your potential customers.</p>
+    <div class="scenarios-grid">
+      <div class="scenario-card">
+        <span class="scenario-icon">🍽️</span>
+        <h3>Someone's Looking for a Restaurant</h3>
+        <p>A family moves to Ferndale. They search "restaurants near me." Your place has great food and loyal regulars, but no website. They find somewhere else instead, and they never know you exist.</p>
+      </div>
+      <div class="scenario-card">
+        <span class="scenario-icon">🔧</span>
+        <h3>Someone Needs a Plumber</h3>
+        <p>A homeowner has a leak. They grab their phone and search. If your business doesn't come up, you're not even in the running, no matter how good your work is or how long you've been in business.</p>
+      </div>
+      <div class="scenario-card">
+        <span class="scenario-icon">🛍️</span>
+        <h3>Someone Wants to Support Local</h3>
+        <p>Plenty of people in Whatcom County actively want to shop local. But they search online first to find options. No website means they don't even know they have the option to choose you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="objections">
+  <div class="section-inner">
+    <span class="section-label">Common Concerns</span>
+    <h2 class="section-title">We Hear These All the Time</h2>
+    <p class="section-sub">Totally fair. Here's an honest answer to each one.</p>
+    <div class="objections-list">
+      <div class="objection">
+        <span class="objection-icon">📘</span>
+        <div>
+          <h3>"I already have a Facebook page"</h3>
+          <p>Facebook is a great tool, but you're renting space on someone else's platform. They control who sees your posts, they change the rules constantly, and not everyone is on Facebook. A website is yours. No algorithm decides whether your hours show up. No platform can shut you down. And when someone Googles your business name, a real website is what they expect to find.</p>
+        </div>
+      </div>
+      <div class="objection">
+        <span class="objection-icon">🤝</span>
+        <div>
+          <h3>"My customers already know me"</h3>
+          <p>That's genuinely wonderful, and word of mouth is powerful. But your current customers aren't your only potential customers. Every person who moves to the area, every visitor passing through, every person a friend recommends you to, they all do what everyone does now: they Google you. If nothing comes up, some of them won't bother to dig further.</p>
+        </div>
+      </div>
+      <div class="objection">
+        <span class="objection-icon">💸</span>
+        <div>
+          <h3>"It's too expensive"</h3>
+          <p>This one surprises most people. A simple, professional website starts at $200. Hosting runs $10 a month, which is less than most people spend on coffee in a week. Compare that to what you're probably spending on flyers, ads, or listings on other directories. A website works for you every single day, around the clock, without costing anything extra.</p>
+        </div>
+      </div>
+      <div class="objection">
+        <span class="objection-icon">🤯</span>
+        <div>
+          <h3>"I wouldn't even know where to start"</h3>
+          <p>That's exactly what we're here for. You don't need to know anything about how websites work. We handle everything: the design, the build, getting it online, even the photography if you need it. You show up to a coffee meeting and tell us about your business. We take it from there.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT DOES -->
+<section class="what-it-does">
+  <div class="section-inner">
+    <span class="section-label">What You Get</span>
+    <h2 class="section-title">What a Website Actually Does for You</h2>
+    <p class="section-sub">It's not just a vanity project. A good website works hard for your business every single day.</p>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <span class="benefit-icon">🕐</span>
+        <h3>Open 24/7</h3>
+        <p>Your hours, your location, your phone number, always available. Even when you're closed, your website is answering questions.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">🔍</span>
+        <h3>Found on Google</h3>
+        <p>When someone searches for what you do in Whatcom County, a website gives you a real chance of showing up.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">✅</span>
+        <h3>Looks Legit</h3>
+        <p>A professional website tells customers you take your business seriously. It builds trust before they even contact you.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">📣</span>
+        <h3>Tells Your Story</h3>
+        <p>Your photos, your values, why you do what you do. A website gives you space to connect with customers before they walk in the door.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">📍</span>
+        <h3>Maps and Directions</h3>
+        <p>People find you faster when your address, hours, and a map are all in one place. Less confusion, more foot traffic.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">💬</span>
+        <h3>An Easy Way to Reach You</h3>
+        <p>A clear phone number, email, or contact form means customers can get in touch without having to hunt around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST SECTION -->
+<section class="cost">
+  <div class="section-inner">
+    <div class="cost-layout">
+      <div class="cost-text">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">It's More Affordable Than You Think</h2>
+        <p>We've kept our prices low on purpose. A small local business shouldn't have to choose between a professional online presence and paying the bills.</p>
+        <p>And because we're local too, there's no awkward back-and-forth with a distant agency. We meet for coffee, figure out what you need, and build it together.</p>
+        <a href="web-design.html" class="btn-primary" style="margin-top:0.5rem;">See How the Process Works →</a>
+      </div>
+      <div class="cost-cards">
+        <div class="cost-card">
+          <span class="cost-card-icon">🌐</span>
+          <div>
+            <strong>Website Design and Build</strong>
+            <span>Starting at $200. A clean, professional site built for your business.</span>
+          </div>
+        </div>
+        <div class="cost-card">
+          <span class="cost-card-icon">☁️</span>
+          <div>
+            <strong>Hosting</strong>
+            <span>$10 a month for businesses, $5 for non-profits. Kept online locally in Ferndale.</span>
+          </div>
+        </div>
+        <div class="cost-card">
+          <span class="cost-card-icon">📸</span>
+          <div>
+            <strong>Photography</strong>
+            <span>$35/hour if you need great photos of your space, team, or products.</span>
+          </div>
+        </div>
+        <div class="cost-card">
+          <span class="cost-card-icon">✏️</span>
+          <div>
+            <strong>Ongoing Updates</strong>
+            <span>$35/hour when you need to change hours, add something new, or freshen things up.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Let's Get Your Business Online</h2>
+  <p>No pressure, no jargon, no pushy sales pitch. Just a conversation over coffee.</p>
+  <a href="index.html#contact" class="btn-dark">Get in Touch →</a>
+  <div class="cta-band-links">
+    <a href="web-design.html">See how the web design process works →</a>
+    <a href="index.html#pricing">Just need hosting? See plans →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
+  <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
+  <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Daniel's LinkedIn ↗</a></p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2025 BellinghamHosting.com · <a href="index.html">bellinghamhosting.com</a></p>
+</footer>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.width = s.style.height = (Math.random() * 2.5 + 1.5) + 'px';
+    starsEl.appendChild(s);
+  }
+
+  // Day / Night
+  function applyDayNight() {
+    const hour = new Date().getHours();
+    const isNight = hour >= 20 || hour < 6;
+    const hero = document.querySelector('.hero');
+    const skyBody = document.getElementById('sky-body');
+    if (isNight) {
+      hero.classList.add('is-night');
+      skyBody.classList.remove('is-sun');
+      skyBody.classList.add('is-moon');
+    } else {
+      hero.classList.remove('is-night');
+      skyBody.classList.remove('is-moon');
+      skyBody.classList.add('is-sun');
+    }
+  }
+  applyDayNight();
+  setInterval(applyDayNight, 60000);
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
