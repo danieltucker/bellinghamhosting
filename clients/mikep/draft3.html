@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Detail Co. — Ferndale, WA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --yellow: #f5c800;
+  --yellow-dark: #d9b000;
+  --yellow-pale: #fffbe6;
+  --yellow-mid: #fdf0a0;
+  --black: #111111;
+  --dark: #1a1a1a;
+  --white: #ffffff;
+  --cream: #fdfbf4;
+  --warm-gray: #f0ede6;
+  --text-muted: #777;
+  --text-mid: #444;
+  --border: #e5e0d5;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--black); font-family: var(--sans); font-weight: 400; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--cream);
+  border-bottom: 2px solid var(--black);
+  padding: 0 52px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.3s;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--black);
+}
+.nav-logo-text {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+.nav-logo-text span { color: var(--black); opacity: 0.4; font-weight: 400; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--black); }
+.nav-cta {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.82rem;
+  background: var(--yellow);
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 10px 24px;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 3px 3px 0 var(--black);
+}
+.nav-cta:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--black); }
+
+/* HERO */
+.hero {
+  padding-top: 68px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  padding: 80px 60px 80px 52px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--black);
+  margin-bottom: 36px;
+  width: fit-content;
+  box-shadow: 3px 3px 0 var(--black);
+}
+.hero-badge::before { content: '📍'; font-size: 0.85rem; }
+h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(3.8rem, 7vw, 7rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 28px;
+}
+h1 em {
+  font-style: italic;
+  color: var(--black);
+  position: relative;
+  display: inline-block;
+}
+h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 12px;
+  background: var(--yellow);
+  z-index: -1;
+  border-radius: 2px;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-mid);
+  max-width: 420px;
+  margin-bottom: 44px;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 60px; }
+.btn-primary {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--black);
+  color: var(--yellow);
+  border: 2px solid var(--black);
+  padding: 16px 36px;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 4px 4px 0 var(--yellow-dark);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--yellow-dark); }
+.btn-primary::after { content: '→'; }
+.btn-secondary {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--black);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: gap 0.2s;
+}
+.btn-secondary:hover { gap: 14px; }
+.btn-secondary::after { content: '↓'; }
+.hero-trust {
+  display: flex; align-items: center; gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.trust-avatars { display: flex; }
+.trust-avatars span {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+  background: var(--black);
+  color: var(--yellow);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center;
+  margin-right: -10px;
+}
+.trust-avatars span:nth-child(2) { background: var(--yellow); color: var(--black); }
+.trust-avatars span:nth-child(3) { background: #333; color: var(--yellow); }
+.trust-text { padding-left: 16px; }
+.trust-stars { color: var(--yellow); font-size: 0.85rem; margin-bottom: 2px; }
+.trust-label { font-size: 0.78rem; color: var(--text-muted); }
+.trust-label strong { color: var(--black); font-weight: 600; }
+
+.hero-right {
+  background: var(--yellow);
+  border-left: 2px solid var(--black);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+}
+.hero-img-wrap { overflow: hidden; position: relative; }
+.hero-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.hero-img-wrap:hover img { transform: scale(1.04); }
+.hero-img-wrap:first-child { border-bottom: 2px solid var(--black); }
+.hero-tag-float {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  color: var(--black);
+  z-index: 2;
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+/* WAVY DIVIDER */
+.wave-divider {
+  background: var(--black);
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg { display: block; width: 100%; }
+
+/* TICKER */
+.ticker-wrap {
+  background: var(--yellow);
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  overflow: hidden;
+  padding: 16px 0;
+}
+.ticker-inner {
+  display: flex;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--black);
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+.ticker-sep {
+  color: rgba(0,0,0,0.3);
+  padding: 0 4px;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SERVICES */
+.services {
+  background: var(--cream);
+  padding: 100px 52px;
+  border-bottom: 2px solid var(--black);
+}
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 0 var(--black);
+}
+.services h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+.services h2 em { font-style: italic; }
+.services-intro {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 60px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 4px 4px 0 var(--black);
+}
+.service-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--black); }
+.service-card.featured {
+  background: var(--yellow);
+}
+.service-card.featured .service-desc { color: rgba(0,0,0,0.6); }
+.service-card.featured .service-price { background: var(--black); color: var(--yellow); }
+.service-emoji {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.service-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.service-desc {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.service-price {
+  display: inline-block;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 20px;
+  color: var(--black);
+  box-shadow: 2px 2px 0 var(--black);
+}
+.service-card-num {
+  position: absolute;
+  top: 20px; right: 24px;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 4rem;
+  color: rgba(0,0,0,0.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.service-card.featured .service-card-num { color: rgba(0,0,0,0.07); }
+
+/* ADD-ONS */
+.addons {
+  background: var(--black);
+  padding: 100px 52px;
+  border-bottom: 2px solid var(--black);
+}
+.addons .section-eyebrow { background: var(--yellow); }
+.addons h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.addons h2 em { color: var(--yellow); font-style: italic; }
+.addons-intro {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.4);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.addon-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 36px 32px;
+  display: flex; gap: 24px; align-items: flex-start;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  cursor: default;
+}
+.addon-card:hover {
+  background: rgba(245,200,0,0.08);
+  border-color: rgba(245,200,0,0.4);
+  transform: translateY(-3px);
+}
+.addon-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: var(--yellow);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid rgba(0,0,0,0.15);
+}
+.addon-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.addon-desc {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+}
+
+/* GALLERY */
+.gallery {
+  background: var(--warm-gray);
+  padding: 100px 52px;
+  border-bottom: 2px solid var(--black);
+}
+.gallery h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.gallery h2 em { font-style: italic; color: var(--black); }
+.gallery-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 280px 220px;
+  gap: 12px;
+}
+.g-wide { grid-column: span 2; }
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid var(--black);
+  position: relative;
+  transition: box-shadow 0.25s, transform 0.25s;
+  box-shadow: 3px 3px 0 var(--black);
+}
+.gallery-item:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--black); }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-label {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  color: var(--black);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+/* ABOUT */
+.about {
+  background: var(--yellow);
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+  padding: 100px 52px;
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img-wrap img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid var(--black);
+  display: block;
+  box-shadow: 8px 8px 0 var(--black);
+}
+.about-float-card {
+  position: absolute;
+  bottom: -20px; right: -28px;
+  background: var(--black);
+  color: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+}
+.about-float-card .big { font-family: var(--serif); font-weight: 900; font-size: 2rem; color: var(--yellow); line-height: 1; }
+.about-float-card .small { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.about h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.about h2 em { font-style: italic; }
+.about p {
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: rgba(0,0,0,0.65);
+  margin-bottom: 18px;
+}
+.about p strong { color: var(--black); font-weight: 600; }
+.area-list {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.area-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--black);
+}
+.area-item::before {
+  content: '✓';
+  width: 24px; height: 24px;
+  background: var(--black);
+  color: var(--yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* PROCESS */
+.process {
+  background: var(--cream);
+  padding: 100px 52px;
+  border-bottom: 2px solid var(--black);
+}
+.process h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 60px;
+}
+.process h2 em { font-style: italic; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.process-step {
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 4px 4px 0 var(--black);
+  cursor: default;
+}
+.process-step:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--black); background: var(--yellow-pale); }
+.step-number {
+  width: 48px; height: 48px;
+  background: var(--yellow);
+  border: 2px solid var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--black);
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 0 var(--black);
+}
+.step-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.step-body {
+  font-size: 0.87rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* CTA */
+.cta-section {
+  background: var(--black);
+  padding: 120px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-doodle {
+  position: absolute;
+  font-size: 12rem;
+  opacity: 0.03;
+  pointer-events: none;
+  user-select: none;
+}
+.cta-doodle-1 { top: -20px; left: -40px; transform: rotate(-20deg); }
+.cta-doodle-2 { bottom: -40px; right: -20px; transform: rotate(15deg); }
+.cta-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.cta-left .cta-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow);
+  border: 2px solid var(--yellow-dark);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
+  padding: 6px 16px;
+  margin-bottom: 28px;
+  box-shadow: 2px 2px 0 rgba(255,255,255,0.1);
+}
+.cta-left h2 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.cta-left h2 em { font-style: italic; color: var(--yellow); }
+.cta-left p { font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.cta-card {
+  background: var(--yellow);
+  border: 3px solid var(--yellow-dark);
+  border-radius: 24px;
+  padding: 52px 44px;
+  text-align: center;
+  box-shadow: 8px 8px 0 rgba(255,255,255,0.08);
+}
+.cta-card-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+.cta-card-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+  display: block;
+}
+.cta-card-phone {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.cta-card-phone:hover { color: var(--dark); }
+.cta-card-sub {
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 32px;
+  display: block;
+}
+.btn-call {
+  display: block;
+  background: var(--black);
+  color: var(--yellow);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  padding: 16px 0;
+  text-decoration: none;
+  border-radius: 100px;
+  border: 2px solid var(--black);
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+  margin-bottom: 12px;
+}
+.btn-call:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(0,0,0,0.3); }
+.cta-areas {
+  font-size: 0.72rem;
+  color: rgba(0,0,0,0.45);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  border-top: 2px solid rgba(255,255,255,0.06);
+  padding: 72px 52px 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 32px;
+}
+.footer-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.footer-logo-mark {
+  width: 40px; height: 40px;
+  background: var(--yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--black);
+  flex-shrink: 0;
+}
+.footer-logo-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+.footer-tagline {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.7;
+  margin-bottom: 0;
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--yellow); }
+.footer-col p { font-size: 0.87rem; color: rgba(255,255,255,0.4); line-height: 1.8; }
+.footer-col strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.18); }
+.footer-bottom a { color: rgba(245,200,0,0.5); text-decoration: none; }
+
+/* ANIMATIONS */
+.pop-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.pop-in.show { opacity: 1; transform: translateY(0); }
+.pop-in:nth-child(2) { transition-delay: 0.08s; }
+.pop-in:nth-child(3) { transition-delay: 0.16s; }
+.pop-in:nth-child(4) { transition-delay: 0.24s; }
+
+/* MOBILE */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 20px 60px; min-height: 100vh; }
+  .hero-right { display: none; }
+  .services, .addons, .gallery, .about, .process, .cta-section, footer { padding: 80px 20px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .addons-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+  .g-wide { grid-column: span 2; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-float-card { right: 0; bottom: -16px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .cta-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+@media (max-width: 600px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .area-list { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .g-wide { grid-column: span 1; }
+  h1 { font-size: 3.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">A</div>
+    <div class="nav-logo-text">Apex Detail <span>Co.</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About Mike</a></li>
+    <li><a href="#contact">Book Now</a></li>
+  </ul>
+  <a href="tel:+13605550100" class="nav-cta">📞 Call Mike</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge">Ferndale, WA · Whatcom County</div>
+    <h1>Your car, <em>spotless.</em> We come to you.</h1>
+    <p class="hero-sub">Professional mobile detailing from a Ferndale local who genuinely loves what he does. Starting at $150 — no drop-off, no hassle.</p>
+    <div class="hero-actions">
+      <a href="tel:+13605550100" class="btn-primary">Call or Text Mike</a>
+      <a href="#services" class="btn-secondary">See services</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-avatars">
+        <span>J</span><span>M</span><span>K</span>
+      </div>
+      <div class="trust-text">
+        <div class="trust-stars">★★★★★</div>
+        <div class="trust-label"><strong>Whatcom County's</strong> favorite mobile detailer</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="IMG_0052.jpeg" alt="Clean car interior">
+      <span class="hero-tag-float">✨ After Detail</span>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="IMG_0046.jpeg" alt="Rear seat detail">
+      <span class="hero-tag-float">🪑 Seat Detail</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">Full Detail starting at $150</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Engine Bay Cleaning</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Exterior Wash & Wax</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Odor Elimination</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Mobile — We Come to You</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Serving All of Whatcom County</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Full Detail starting at $150</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Engine Bay Cleaning</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Exterior Wash & Wax</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Odor Elimination</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Mobile — We Come to You</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Serving All of Whatcom County</span>
+    <span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-eyebrow">🧽 What We Offer</div>
+  <h2>Services built<br>for <em>real people.</em></h2>
+  <p class="services-intro">No confusing packages or hidden fees — just honest pricing and work you can see for yourself. Pick what you need and Mike handles the rest.</p>
+  <div class="services-grid">
+    <div class="service-card pop-in">
+      <div class="service-card-num">01</div>
+      <span class="service-emoji">🚗</span>
+      <div class="service-name">Full Detail — Car</div>
+      <p class="service-desc">Complete interior and exterior — vacuum, wipe-down, windows, tires, the lot. Walk out to a car that feels brand new.</p>
+      <div class="service-price">Starting at $150</div>
+    </div>
+    <div class="service-card featured pop-in">
+      <div class="service-card-num">02</div>
+      <span class="service-emoji">🚐</span>
+      <div class="service-name">Full Detail — SUV / Truck</div>
+      <p class="service-desc">Same thorough process scaled up for bigger rides. Minivans, SUVs, trucks — more space, same great results.</p>
+      <div class="service-price">Starting at $200</div>
+    </div>
+    <div class="service-card pop-in">
+      <div class="service-card-num">03</div>
+      <span class="service-emoji">✦</span>
+      <div class="service-name">Add-On Services</div>
+      <p class="service-desc">Mix and match extras to get exactly what your vehicle needs. Ask Mike — he'll help you figure out the best combo.</p>
+      <div class="service-price">Ask for pricing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons" id="addons">
+  <div class="section-eyebrow">⚡ Upgrades</div>
+  <h2>Add-ons that<br>make a <em>difference.</em></h2>
+  <p class="addons-intro">Stack these onto any detail to get the exact result you're after. Each one makes a real, noticeable impact.</p>
+  <div class="addons-grid">
+    <div class="addon-card pop-in">
+      <div class="addon-icon">🚿</div>
+      <div>
+        <div class="addon-name">Exterior Wash</div>
+        <p class="addon-desc">Hand wash with professional soap, wheel cleaning, and a thorough rinse. A solid foundation — or a great standalone.</p>
+      </div>
+    </div>
+    <div class="addon-card pop-in">
+      <div class="addon-icon">✨</div>
+      <div>
+        <div class="addon-name">Exterior Wax</div>
+        <p class="addon-desc">Protective wax coat that shields your paint and leaves a head-turning shine. Applied after a wash for best results.</p>
+      </div>
+    </div>
+    <div class="addon-card pop-in">
+      <div class="addon-icon">⚙️</div>
+      <div>
+        <div class="addon-name">Engine Bay Clean</div>
+        <p class="addon-desc">Degreased and dressed — looks great and helps you catch leaks early. More useful than people realize.</p>
+      </div>
+    </div>
+    <div class="addon-card pop-in">
+      <div class="addon-icon">🌿</div>
+      <div>
+        <div class="addon-name">Odor Elimination</div>
+        <p class="addon-desc">Pro-grade neutralizers that kill odors at the source. Pets, smoke, mildew — gone for real, not just covered up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-eyebrow">📸 The Work</div>
+  <h2>Results that<br><em>speak for themselves.</em></h2>
+  <p class="gallery-sub">Real vehicles from around Whatcom County. No filters, no tricks.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item g-wide">
+      <img src="IMG_0051.jpeg" alt="Full interior detail">
+      <span class="gallery-label">Interior Detail</span>
+    </div>
+    <div class="gallery-item">
+      <img src="IMG_0038.jpeg" alt="Driver seat area">
+      <span class="gallery-label">Driver Area</span>
+    </div>
+    <div class="gallery-item">
+      <img src="IMG_0036.jpeg" alt="Rear row detail">
+      <span class="gallery-label">Third Row</span>
+    </div>
+    <div class="gallery-item g-wide">
+      <img src="IMG_0046.jpeg" alt="Middle row seats">
+      <span class="gallery-label">Middle Row</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <img src="IMG_0052.jpeg" alt="Detailed vehicle interior">
+      <div class="about-float-card">
+        <div class="big">100%</div>
+        <div class="small">Mobile Service</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow">👋 Meet Mike</div>
+      <h2>A Ferndale local<br>who <em>cares.</em></h2>
+      <p>Hey, I'm <strong>Mike</strong> — born and raised right here in Whatcom County. I started Apex Detail Co. because I wanted to offer something different: real quality, honest pricing, and a guy who actually shows up when he says he will.</p>
+      <p>I come to your home, your office, wherever your car is. You don't have to rearrange your day for a clean car anymore. I bring everything I need and get it done right.</p>
+      <p>I serve all of Whatcom County and I genuinely love what I do. That shows in every vehicle I touch.</p>
+      <div class="area-list">
+        <div class="area-item">Ferndale</div>
+        <div class="area-item">Bellingham</div>
+        <div class="area-item">Lynden</div>
+        <div class="area-item">Birch Bay</div>
+        <div class="area-item">Blaine</div>
+        <div class="area-item">All of Whatcom Co.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-eyebrow">🗓️ How It Works</div>
+  <h2>Easy as<br><em>1, 2, 3, 4.</em></h2>
+  <div class="process-steps">
+    <div class="process-step pop-in">
+      <div class="step-number">1</div>
+      <div class="step-title">Reach Out</div>
+      <p class="step-body">Text or call Mike with your vehicle, location, and what you're looking for. He replies fast.</p>
+    </div>
+    <div class="process-step pop-in">
+      <div class="step-number">2</div>
+      <div class="step-title">Pick a Time</div>
+      <p class="step-body">Schedule a time that works for you — morning, afternoon, weekend. Mike is flexible.</p>
+    </div>
+    <div class="process-step pop-in">
+      <div class="step-number">3</div>
+      <div class="step-title">He Shows Up</div>
+      <p class="step-body">Mike arrives with everything he needs. You don't have to do a thing — just let him work.</p>
+    </div>
+    <div class="process-step pop-in">
+      <div class="step-number">4</div>
+      <div class="step-title">Drive Clean</div>
+      <p class="step-body">Walk out to a vehicle that looks and smells incredible. Then tell your friends.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-doodle cta-doodle-1">🚗</div>
+  <div class="cta-doodle cta-doodle-2">✨</div>
+  <div class="cta-inner">
+    <div class="cta-left">
+      <span class="cta-eyebrow">📞 Book Your Detail</span>
+      <h2>Ready for a <em>clean ride?</em></h2>
+      <p>Mike picks up, Mike replies, Mike shows up. No automated systems, no guesswork — just a guy who cares about your car as much as you do.</p>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card">
+        <span class="cta-card-icon">📱</span>
+        <span class="cta-card-label">Call or Text Anytime</span>
+        <a href="tel:+13605550100" class="cta-card-phone">(360) 555-0100</a>
+        <span class="cta-card-sub">Fast reply · Flexible scheduling</span>
+        <a href="tel:+13605550100" class="btn-call">Book My Detail Now</a>
+        <p class="cta-areas">Serving Ferndale · Bellingham · Lynden<br>Birch Bay · Blaine · All of Whatcom County</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-wrap">
+        <div class="footer-logo-mark">A</div>
+        <div class="footer-logo-name">Apex Detail Co.</div>
+      </div>
+      <p class="footer-tagline">Mobile auto detailing in Whatcom County. Professional results, friendly service, honest pricing — run by a Ferndale local.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Full Detail — Car ($150+)</a></li>
+        <li><a href="#services">Full Detail — SUV/Truck ($200+)</a></li>
+        <li><a href="#addons">Exterior Wash</a></li>
+        <li><a href="#addons">Exterior Wax</a></li>
+        <li><a href="#addons">Engine Bay Clean</a></li>
+        <li><a href="#addons">Odor Elimination</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <p>
+        <strong>Mike</strong><br>
+        Ferndale, Washington<br><br>
+        <a href="tel:+13605550100" style="color:var(--yellow);">(360) 555-0100</a><br>
+        Call or text anytime<br><br>
+        <strong>Service Area</strong><br>
+        All of Whatcom County
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Apex Detail Co. · <a href="#">apexdetailco.com</a> · Ferndale, WA</p>
+    <p>Whatcom County's Mobile Detailer</p>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.pop-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
