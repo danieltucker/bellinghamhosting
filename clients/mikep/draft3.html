@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apex Detail Co. — Ferndale, WA</title>
+<title>Apex Detail Co. | Ferndale, WA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -90,18 +90,19 @@ nav {
 /* HERO */
 .hero {
   padding-top: 68px;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 55% 1fr;
+  min-height: 72vh;
+  display: flex;
   background: var(--cream);
   position: relative;
   overflow: hidden;
 }
 .hero-left {
-  padding: 80px 60px 80px 52px;
+  padding: 80px 60px;
   display: flex; flex-direction: column; justify-content: center;
   position: relative;
   z-index: 1;
+  flex: 1;
+  max-width: 900px;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -202,23 +203,6 @@ h1 em::after {
 .trust-label { font-size: 0.78rem; color: var(--text-muted); }
 .trust-label strong { color: var(--black); font-weight: 600; }
 
-.hero-right {
-  background: var(--yellow);
-  border-left: 2px solid var(--black);
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 2px;
-}
-.hero-img-wrap { overflow: hidden; position: relative; }
-.hero-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.hero-img-wrap:hover img { transform: scale(1.04); }
-.hero-img-wrap:first-child { border-bottom: 2px solid var(--black); }
 .hero-tag-float {
   position: absolute;
   bottom: 16px; left: 16px;
@@ -324,12 +308,9 @@ h1 em::after {
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 4px 4px 0 var(--black);
 }
-.service-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--black); }
-.service-card.featured {
-  background: var(--yellow);
-}
-.service-card.featured .service-desc { color: rgba(0,0,0,0.6); }
-.service-card.featured .service-price { background: var(--black); color: var(--yellow); }
+.service-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--black); background: var(--yellow); border-color: var(--yellow-dark); }
+.service-card:hover .service-desc { color: rgba(0,0,0,0.6); }
+.service-card:hover .service-price { background: var(--black); color: var(--yellow); }
 .service-emoji {
   font-size: 2.2rem;
   margin-bottom: 20px;
@@ -370,7 +351,50 @@ h1 em::after {
   line-height: 1;
   pointer-events: none;
 }
-.service-card.featured .service-card-num { color: rgba(0,0,0,0.07); }
+
+/* SERVICES ADDONS WRAP */
+.services-addons-wrap {
+  margin-top: 32px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 4px 4px 0 var(--black);
+}
+.addons-subgrid-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  display: block;
+}
+.addons-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.addon-mini {
+  background: var(--cream);
+  border: 2px solid var(--black);
+  border-radius: 12px;
+  padding: 24px 22px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.addon-mini:hover { background: var(--yellow); border-color: var(--yellow-dark); }
+.addon-mini-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.addon-mini-desc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
 
 /* ADD-ONS */
 .addons {
@@ -818,9 +842,7 @@ footer {
 @media (max-width: 960px) {
   nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 60px 20px 60px; min-height: 100vh; }
-  .hero-right { display: none; }
+  .hero-left { padding: 60px 20px; min-height: 100vh; }
   .services, .addons, .gallery, .about, .process, .cta-section, footer { padding: 80px 20px; }
   .services-grid { grid-template-columns: 1fr; }
   .addons-grid { grid-template-columns: 1fr; }
@@ -840,6 +862,43 @@ footer {
   .g-wide { grid-column: span 1; }
   h1 { font-size: 3.2rem; }
 }
+
+  /* LIGHTBOX */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  #lightbox.open { opacity: 1; pointer-events: all; }
+  #lightbox-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.92); cursor: pointer;
+  }
+  #lightbox-content { position: relative; z-index: 1; }
+  #lightbox-img {
+    display: block;
+    max-width: min(90vw, 1100px);
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    cursor: zoom-out;
+  }
+  #lightbox-close {
+    position: absolute; top: -18px; right: -18px;
+    width: 44px; height: 44px;
+    background: white; color: #111;
+    border: none; border-radius: 50%;
+    font-size: 1.1rem; font-weight: 700;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    line-height: 1; z-index: 2;
+    transition: transform 0.15s;
+  }
+  #lightbox-close:hover { transform: scale(1.1); }
+  img[src^="images/"] { cursor: zoom-in; }
 </style>
 </head>
 <body>
@@ -864,7 +923,7 @@ footer {
   <div class="hero-left">
     <div class="hero-badge">Ferndale, WA · Whatcom County</div>
     <h1>Your car, <em>spotless.</em> We come to you.</h1>
-    <p class="hero-sub">Professional mobile detailing from a Ferndale local who genuinely loves what he does. Starting at $150 — no drop-off, no hassle.</p>
+    <p class="hero-sub">Professional mobile detailing from a Ferndale local who genuinely loves what he does. Starting at $150. No drop-off, no hassle.</p>
     <div class="hero-actions">
       <a href="tel:+13605550100" class="btn-primary">Call or Text Mike</a>
       <a href="#services" class="btn-secondary">See services</a>
@@ -877,16 +936,6 @@ footer {
         <div class="trust-stars">★★★★★</div>
         <div class="trust-label"><strong>Whatcom County's</strong> favorite mobile detailer</div>
       </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img-wrap">
-      <img src="IMG_0052.jpeg" alt="Clean car interior">
-      <span class="hero-tag-float">✨ After Detail</span>
-    </div>
-    <div class="hero-img-wrap">
-      <img src="IMG_0046.jpeg" alt="Rear seat detail">
-      <span class="hero-tag-float">🪑 Seat Detail</span>
     </div>
   </div>
 </section>
@@ -902,7 +951,7 @@ footer {
     <span class="ticker-sep">·</span>
     <span class="ticker-item">Odor Elimination</span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Mobile — We Come to You</span>
+    <span class="ticker-item">Mobile: We Come to You</span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">Serving All of Whatcom County</span>
     <span class="ticker-sep">·</span>
@@ -914,7 +963,7 @@ footer {
     <span class="ticker-sep">·</span>
     <span class="ticker-item">Odor Elimination</span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Mobile — We Come to You</span>
+    <span class="ticker-item">Mobile: We Come to You</span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">Serving All of Whatcom County</span>
     <span class="ticker-sep">·</span>
@@ -925,68 +974,50 @@ footer {
 <section class="services" id="services">
   <div class="section-eyebrow">🧽 What We Offer</div>
   <h2>Services built<br>for <em>real people.</em></h2>
-  <p class="services-intro">No confusing packages or hidden fees — just honest pricing and work you can see for yourself. Pick what you need and Mike handles the rest.</p>
+  <p class="services-intro">No confusing packages or hidden fees. Just honest pricing and work you can see for yourself. Pick what you need and Mike handles the rest.</p>
   <div class="services-grid">
     <div class="service-card pop-in">
       <div class="service-card-num">01</div>
-      <span class="service-emoji">🚗</span>
-      <div class="service-name">Full Detail — Car</div>
-      <p class="service-desc">Complete interior and exterior — vacuum, wipe-down, windows, tires, the lot. Walk out to a car that feels brand new.</p>
+      <div class="service-name">Full Detail: Car</div>
+      <p class="service-desc">Complete interior and exterior: vacuum, wipe-down, windows, tires, the lot. Walk out to a car that feels brand new.</p>
       <div class="service-price">Starting at $150</div>
     </div>
-    <div class="service-card featured pop-in">
+    <div class="service-card pop-in">
       <div class="service-card-num">02</div>
-      <span class="service-emoji">🚐</span>
-      <div class="service-name">Full Detail — SUV / Truck</div>
-      <p class="service-desc">Same thorough process scaled up for bigger rides. Minivans, SUVs, trucks — more space, same great results.</p>
+      <div class="service-name">Full Detail: SUV / Truck</div>
+      <p class="service-desc">Same thorough process scaled up for bigger rides. Minivans, SUVs, trucks. More space, same great results.</p>
       <div class="service-price">Starting at $200</div>
     </div>
     <div class="service-card pop-in">
       <div class="service-card-num">03</div>
-      <span class="service-emoji">✦</span>
-      <div class="service-name">Add-On Services</div>
-      <p class="service-desc">Mix and match extras to get exactly what your vehicle needs. Ask Mike — he'll help you figure out the best combo.</p>
+      <div class="service-name">Fleet Cleaning</div>
+      <p class="service-desc">Volume pricing for businesses running multiple vehicles. Work vans, company cars, or a full commercial fleet. Mike offers competitive rates for regular scheduled cleans.</p>
       <div class="service-price">Ask for pricing</div>
+    </div>
+  </div>
+  <div class="services-addons-wrap">
+    <span class="addons-subgrid-label">Add-On Services</span>
+    <div class="addons-subgrid">
+      <div class="addon-mini">
+        <div class="addon-mini-name">Exterior Wash</div>
+        <p class="addon-mini-desc">Hand wash with professional soap, wheel cleaning, and a thorough rinse. A solid foundation or a great standalone.</p>
+      </div>
+      <div class="addon-mini">
+        <div class="addon-mini-name">Exterior Wax</div>
+        <p class="addon-mini-desc">Protective wax coat that shields your paint and leaves a head-turning shine. Applied after a wash for best results.</p>
+      </div>
+      <div class="addon-mini">
+        <div class="addon-mini-name">Engine Bay Clean</div>
+        <p class="addon-mini-desc">Degreased and dressed. Looks great and helps you catch leaks early. More useful than people realize.</p>
+      </div>
+      <div class="addon-mini">
+        <div class="addon-mini-name">Odor Elimination</div>
+        <p class="addon-mini-desc">Pro-grade neutralizers that kill odors at the source. Pets, smoke, mildew. Gone for real, not just covered up.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ADD-ONS -->
-<section class="addons" id="addons">
-  <div class="section-eyebrow">⚡ Upgrades</div>
-  <h2>Add-ons that<br>make a <em>difference.</em></h2>
-  <p class="addons-intro">Stack these onto any detail to get the exact result you're after. Each one makes a real, noticeable impact.</p>
-  <div class="addons-grid">
-    <div class="addon-card pop-in">
-      <div class="addon-icon">🚿</div>
-      <div>
-        <div class="addon-name">Exterior Wash</div>
-        <p class="addon-desc">Hand wash with professional soap, wheel cleaning, and a thorough rinse. A solid foundation — or a great standalone.</p>
-      </div>
-    </div>
-    <div class="addon-card pop-in">
-      <div class="addon-icon">✨</div>
-      <div>
-        <div class="addon-name">Exterior Wax</div>
-        <p class="addon-desc">Protective wax coat that shields your paint and leaves a head-turning shine. Applied after a wash for best results.</p>
-      </div>
-    </div>
-    <div class="addon-card pop-in">
-      <div class="addon-icon">⚙️</div>
-      <div>
-        <div class="addon-name">Engine Bay Clean</div>
-        <p class="addon-desc">Degreased and dressed — looks great and helps you catch leaks early. More useful than people realize.</p>
-      </div>
-    </div>
-    <div class="addon-card pop-in">
-      <div class="addon-icon">🌿</div>
-      <div>
-        <div class="addon-name">Odor Elimination</div>
-        <p class="addon-desc">Pro-grade neutralizers that kill odors at the source. Pets, smoke, mildew — gone for real, not just covered up.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- GALLERY -->
 <section class="gallery" id="gallery">
@@ -995,20 +1026,20 @@ footer {
   <p class="gallery-sub">Real vehicles from around Whatcom County. No filters, no tricks.</p>
   <div class="gallery-grid">
     <div class="gallery-item g-wide">
-      <img src="IMG_0051.jpeg" alt="Full interior detail">
-      <span class="gallery-label">Interior Detail</span>
+      <img src="images/oddysey-after/IMG_0043.jpeg" alt="Honda Odyssey interior after detail">
+      <span class="gallery-label">Odyssey · After</span>
     </div>
     <div class="gallery-item">
-      <img src="IMG_0038.jpeg" alt="Driver seat area">
-      <span class="gallery-label">Driver Area</span>
+      <img src="images/tesla-before/IMG_0054.jpeg" alt="Tesla Model 3 interior before detail">
+      <span class="gallery-label">Tesla · Before</span>
     </div>
     <div class="gallery-item">
-      <img src="IMG_0036.jpeg" alt="Rear row detail">
-      <span class="gallery-label">Third Row</span>
+      <img src="images/oddysey-before/IMG_0032.jpeg" alt="Honda Odyssey interior before detail">
+      <span class="gallery-label">Odyssey · Before</span>
     </div>
     <div class="gallery-item g-wide">
-      <img src="IMG_0046.jpeg" alt="Middle row seats">
-      <span class="gallery-label">Middle Row</span>
+      <img src="images/tesla-after/IMG_0087.jpeg" alt="Tesla Model 3 interior after detail">
+      <span class="gallery-label">Tesla · After</span>
     </div>
   </div>
 </section>
@@ -1017,7 +1048,7 @@ footer {
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-img-wrap">
-      <img src="IMG_0052.jpeg" alt="Detailed vehicle interior">
+      <img src="images/tesla-after/IMG_0076.jpeg" alt="Tesla Model 3 after full interior detail">
       <div class="about-float-card">
         <div class="big">100%</div>
         <div class="small">Mobile Service</div>
@@ -1026,7 +1057,7 @@ footer {
     <div>
       <div class="section-eyebrow">👋 Meet Mike</div>
       <h2>A Ferndale local<br>who <em>cares.</em></h2>
-      <p>Hey, I'm <strong>Mike</strong> — born and raised right here in Whatcom County. I started Apex Detail Co. because I wanted to offer something different: real quality, honest pricing, and a guy who actually shows up when he says he will.</p>
+      <p>Hey, I'm <strong>Mike</strong>, born and raised right here in Whatcom County. I started Apex Detail Co. because I wanted to offer something different: real quality, honest pricing, and a guy who actually shows up when he says he will.</p>
       <p>I come to your home, your office, wherever your car is. You don't have to rearrange your day for a clean car anymore. I bring everything I need and get it done right.</p>
       <p>I serve all of Whatcom County and I genuinely love what I do. That shows in every vehicle I touch.</p>
       <div class="area-list">
@@ -1054,12 +1085,12 @@ footer {
     <div class="process-step pop-in">
       <div class="step-number">2</div>
       <div class="step-title">Pick a Time</div>
-      <p class="step-body">Schedule a time that works for you — morning, afternoon, weekend. Mike is flexible.</p>
+      <p class="step-body">Schedule a time that works for you: morning, afternoon, weekend. Mike is flexible.</p>
     </div>
     <div class="process-step pop-in">
       <div class="step-number">3</div>
       <div class="step-title">He Shows Up</div>
-      <p class="step-body">Mike arrives with everything he needs. You don't have to do a thing — just let him work.</p>
+      <p class="step-body">Mike arrives with everything he needs. You don't have to do a thing. Just let him work.</p>
     </div>
     <div class="process-step pop-in">
       <div class="step-number">4</div>
@@ -1077,7 +1108,7 @@ footer {
     <div class="cta-left">
       <span class="cta-eyebrow">📞 Book Your Detail</span>
       <h2>Ready for a <em>clean ride?</em></h2>
-      <p>Mike picks up, Mike replies, Mike shows up. No automated systems, no guesswork — just a guy who cares about your car as much as you do.</p>
+      <p>Mike picks up, Mike replies, Mike shows up. No automated systems, no guesswork. Just a guy who cares about your car as much as you do.</p>
     </div>
     <div class="cta-right">
       <div class="cta-card">
@@ -1100,13 +1131,13 @@ footer {
         <div class="footer-logo-mark">A</div>
         <div class="footer-logo-name">Apex Detail Co.</div>
       </div>
-      <p class="footer-tagline">Mobile auto detailing in Whatcom County. Professional results, friendly service, honest pricing — run by a Ferndale local.</p>
+      <p class="footer-tagline">Mobile auto detailing in Whatcom County. Professional results, friendly service, honest pricing. Run by a Ferndale local.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#services">Full Detail — Car ($150+)</a></li>
-        <li><a href="#services">Full Detail — SUV/Truck ($200+)</a></li>
+        <li><a href="#services">Full Detail: Car ($150+)</a></li>
+        <li><a href="#services">Full Detail: SUV/Truck ($200+)</a></li>
         <li><a href="#addons">Exterior Wash</a></li>
         <li><a href="#addons">Exterior Wax</a></li>
         <li><a href="#addons">Engine Bay Clean</a></li>
@@ -1136,6 +1167,39 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
 }, { threshold: 0.08 });
 document.querySelectorAll('.pop-in').forEach(el => obs.observe(el));
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div id="lightbox-overlay"></div>
+  <div id="lightbox-content">
+    <button id="lightbox-close" aria-label="Close image">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+</div>
+
+<script>
+  (function() {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    function open(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('img[src^="images/"]').forEach(img => {
+      img.addEventListener('click', () => open(img.src, img.alt));
+    });
+    document.getElementById('lightbox-overlay').addEventListener('click', close);
+    document.getElementById('lightbox-img').addEventListener('click', close);
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
 </script>
 </body>
 </html>

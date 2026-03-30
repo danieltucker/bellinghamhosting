@@ -1,101 +1,1343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Apex Detail Co. — Draft comparison & business analysis</title>
-	<style>
-		body{font-family:system-ui,Segoe UI,Arial;line-height:1.45;padding:28px;color:#111;background:#fff}
-		h1{margin-top:0}
-		section{margin-bottom:20px}
-		.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-		.card{border:1px solid #e6e6e6;padding:12px;border-radius:6px;background:#fafafa}
-		.screens{display:flex;gap:12px;flex-wrap:wrap}
-		.simg{width:300px;height:190px;background:#ddd;border:1px dashed #bbb;display:flex;align-items:center;justify-content:center;color:#666}
-		a {color:#0b66c3}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Detail Co. — Design Review &amp; Business Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #111;
+  --ink-light: #444;
+  --ink-muted: #888;
+  --border: #e4e4e4;
+  --bg: #fff;
+  --bg-off: #f8f8f6;
+  --bg-warm: #fdfcf7;
+  --gold: #c9a84c;
+  --red: #e8132a;
+  --yellow: #f5d000;
+  --green: #1a6e3c;
+  --blue: #0b55c4;
+  --tag-bg: #111;
+  --tag-color: #fff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+::selection { background: #111; color: #fff; }
+
+/* LAYOUT */
+.container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+.container--wide { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* HEADER */
+header {
+  border-bottom: 2px solid var(--ink);
+  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 50;
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-from {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.header-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.header-date {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+.header-nav {
+  display: flex; gap: 24px; list-style: none;
+}
+.header-nav a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.header-nav a:hover { color: var(--ink); }
+
+/* SECTIONS */
+section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+section:last-child { border-bottom: none; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  padding: 4px 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.lead {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  max-width: 620px;
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
+/* HERO SECTION */
+.hero-section {
+  padding: 64px 0 80px;
+  background: var(--bg-warm);
+  border-bottom: 2px solid var(--ink);
+}
+.hero-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+}
+.hero-section h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.12;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 720px;
+}
+.hero-section h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+.hero-intro {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--ink-light);
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+.hero-from {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.hero-avatar {
+  width: 40px; height: 40px;
+  background: var(--ink);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* DRAFT CARDS */
+.draft-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.draft-card {
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.draft-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s ease;
+}
+.draft-card:hover .draft-card-img { transform: scale(1.03); }
+.draft-card-img-wrap { overflow: hidden; position: relative; }
+.draft-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+}
+.badge-1 { background: #c9a84c; color: #080808; }
+.badge-2 { background: #e8132a; color: #fff; }
+.badge-3 { background: #f5d000; color: #111; }
+.draft-card-body { padding: 24px 20px; }
+.draft-card-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.draft-card-vibe {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+.draft-card-traits {
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  line-height: 1.9;
+}
+.draft-card-traits li::before { content: '→ '; color: var(--ink-muted); }
+.draft-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 2px;
+}
+.draft-link:hover { opacity: 0.6; }
+
+/* COMPARISON TABLE */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 0.88rem;
+}
+.compare-table th, .compare-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--bg-off);
+}
+.compare-table th:first-child { width: 140px; }
+.compare-table td:first-child {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+.compare-table tr:hover td { background: var(--bg-off); }
+.th-1 { color: #c9a84c !important; }
+.th-2 { color: #e8132a !important; }
+.th-3 { color: #b8a000 !important; }
+
+/* WHO IS IT FOR */
+.for-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 40px;
+  border: 1.5px solid var(--ink);
+}
+.for-card {
+  padding: 36px 28px;
+  position: relative;
+}
+.for-card:nth-child(2) { border-left: 1.5px solid var(--ink); border-right: 1.5px solid var(--ink); }
+.for-card-num {
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.12;
+  position: absolute;
+  top: 20px; right: 20px;
+}
+.for-card-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+.label-1 { color: var(--gold); }
+.label-2 { color: var(--red); }
+.label-3 { color: #b8a000; }
+.for-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.for-card p {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--ink-light);
+}
+.for-card ul {
+  margin-top: 16px;
+  list-style: none;
+  font-size: 0.83rem;
+  color: var(--ink-light);
+  line-height: 1.9;
+}
+.for-card ul li::before { content: '+ '; font-weight: 700; color: var(--ink); }
+
+/* QUESTION BOXES */
+.questions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+.q-box {
+  border: 1.5px solid var(--border);
+  padding: 28px 24px;
+  background: var(--bg-off);
+  position: relative;
+}
+.q-box-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+  display: block;
+}
+.q-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.q-box p {
+  font-size: 0.84rem;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+.q-box .suggestions {
+  margin-top: 14px;
+  list-style: none;
+  font-size: 0.82rem;
+}
+.q-box .suggestions li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.q-box .suggestions li:last-child { border-bottom: none; }
+.q-box .suggestions .opt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: var(--ink);
+  color: #fff;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+.q-box .suggestions .sub {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+  display: block;
+}
+
+/* MARKET TABLE */
+.market-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+.market-card {
+  border: 1.5px solid var(--border);
+  padding: 28px 24px;
+}
+.market-card h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.market-card ul {
+  list-style: none;
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--ink-light);
+}
+.market-card ul li { padding: 4px 0; }
+.market-card ul li strong { color: var(--ink); }
+.market-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.market-stat:last-child { border-bottom: none; }
+.market-stat-num {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  color: var(--ink);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+.market-stat-label { font-size: 0.82rem; color: var(--ink-light); }
+
+/* SERVICES */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 40px;
+  border: 1.5px solid var(--ink);
+}
+.service-item {
+  padding: 28px 22px;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.service-item:hover { background: var(--bg-off); }
+.service-item:nth-child(3n) { border-right: none; }
+.service-item:nth-child(n+4) { border-top: 1px solid var(--border); }
+.service-item-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.service-item-desc {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+.service-price {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--bg-off);
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+}
+.service-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2px 7px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.tag-anchor { background: #111; color: #fff; }
+.tag-upsell { background: #e8132a; color: #fff; }
+.tag-premium { background: #c9a84c; color: #080808; }
+.tag-seasonal { background: #1a6e3c; color: #fff; }
+
+/* COMPETITORS */
+.comp-list {
+  margin-top: 36px;
+  border: 1.5px solid var(--border);
+}
+.comp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.comp-item:last-child { border-bottom: none; }
+.comp-name { font-weight: 600; color: var(--ink); }
+.comp-type {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+.comp-desc { color: var(--ink-light); line-height: 1.55; }
+.comp-threat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.threat-hi { background: #e8132a; color: #fff; }
+.threat-mid { background: #f5d000; color: #111; }
+.threat-lo { background: #e8e8e8; color: #444; }
+
+/* CHANNELS */
+.channels-list {
+  margin-top: 36px;
+  counter-reset: channel;
+}
+.channel-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.channel-item:last-child { border-bottom: none; }
+.channel-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--border);
+}
+.channel-content h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.channel-content p {
+  font-size: 0.84rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+.channel-priority {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.priority-1 { background: #111; color: #fff; }
+.priority-2 { background: #e4e4e4; color: #444; }
+
+/* CALLOUT */
+.callout {
+  background: var(--ink);
+  color: #fff;
+  padding: 40px 44px;
+  margin: 48px 0;
+}
+.callout h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.callout p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  max-width: 560px;
+}
+
+/* RECOMMENDATION */
+.rec-box {
+  border-left: 4px solid var(--ink);
+  padding: 24px 28px;
+  background: var(--bg-off);
+  margin-bottom: 20px;
+}
+.rec-box h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.rec-box p {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+.rec-box.rec-gold { border-color: var(--gold); }
+.rec-box.rec-red { border-color: var(--red); }
+.rec-box.rec-yellow { border-color: #c4ab00; }
+
+/* NEXT STEPS */
+.steps-list {
+  margin-top: 36px;
+  list-style: none;
+  counter-reset: step;
+}
+.step-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  counter-increment: step;
+}
+.step-item:last-child { border-bottom: none; }
+.step-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  color: var(--border);
+}
+.step-content h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+.step-content p { font-size: 0.83rem; color: var(--ink-light); line-height: 1.7; }
+
+/* FOOTER */
+footer {
+  padding: 40px 0;
+  background: var(--ink);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+}
+footer a { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 768px) {
+  .draft-grid, .for-cards, .questions-grid, .market-grid, .services-grid { grid-template-columns: 1fr; }
+  .for-card:nth-child(2) { border-left: none; border-right: none; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .services-grid { border: none; gap: 1px; }
+  .service-item { border: 1.5px solid var(--border); }
+  .comp-item { grid-template-columns: 1fr; gap: 8px; }
+  .channel-item { grid-template-columns: 36px 1fr; }
+  .compare-table { font-size: 0.78rem; }
+  .compare-table th, .compare-table td { padding: 12px; }
+  .callout { padding: 28px 24px; }
+}
+</style>
 </head>
 <body>
-	<h1>Drafts — quick comparison and business analysis</h1>
 
-	<section>
-		<h2>Files</h2>
-		<div class="cards">
-			<div class="card"><strong>Draft 1</strong><br><a href="draft1.html">Open draft1.html</a><br>Dark, luxury-focused, large typography, cinematic photography, premium feel, clear "Call or Text" CTAs.</div>
-			<div class="card"><strong>Draft 2</strong><br><a href="draft2.html">Open draft2.html</a><br>Bold, high-contrast, modern brand (red/black). Strong headlines, pricing emphasized, grid layout — aggressive conversion focus.</div>
-			<div class="card"><strong>Draft 3</strong><br><a href="draft3.html">Open draft3.html</a><br>Warm, friendly, approachable (yellow/cream). Soft visuals, trust signals, rounded CTA styles — approachable local brand.</div>
-		</div>
-	</section>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-from">From Daniel Tucker, Bellingham Hosting</div>
+      <div class="header-title">Apex Detail Co. — Design Review &amp; Business Analysis</div>
+    </div>
+    <nav>
+      <ul class="header-nav">
+        <li><a href="#drafts">Drafts</a></li>
+        <li><a href="#brand">Brand</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#market">Market</a></li>
+        <li><a href="#next">Next Steps</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-	<section>
-		<h2>Design & feature differences (short)</h2>
-		<ul>
-			<li><strong>Tone:</strong> Draft 1 = premium/professional; Draft 2 = bold/technical; Draft 3 = friendly/local.</li>
-			<li><strong>Visuals:</strong> 1 uses dark, desaturated photography; 2 is high-contrast with strong strokes; 3 uses warm accents, rounded cards.</li>
-			<li><strong>Conversion focus:</strong> 2 highlights prices and direct booking distinctly; 1 emphasizes brand prestige and high-end quality; 3 emphasizes trust and locality (testimonials, simple booking card).</li>
-			<li><strong>UX:</strong> All are single-page, mobile-responsive. Differences lie in CTA prominence, information density, and perceived price positioning.</li>
-		</ul>
-	</section>
+<!-- HERO -->
+<div class="hero-section">
+  <div class="container">
+    <div class="hero-eyebrow">Prepared for Mike P. · Apex Detail Co. · March 2025</div>
+    <h1>Here's where things stand, and <em>what I think you should do.</em></h1>
+    <p class="hero-intro">I put together three very different directions for your site. Each one communicates something specific about your business. Before you pick one, I want to walk you through what each actually says to a customer, what I think works and what doesn't, and give you some real data on the Whatcom County market so you can make a smart call.</p>
+    <p class="hero-intro">I also want to push you to nail down a few brand decisions you'll need before we go live. None of this is complicated, but it matters more than you might think. Let's work through it together.</p>
+    <div class="hero-from">
+      <div class="hero-avatar">D</div>
+      <div>
+        <div style="font-size:0.88rem;">Daniel Tucker</div>
+        <div style="font-size:0.75rem;font-weight:400;color:#888;">Bellingham Hosting · bellinghamhosting.com</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-	<section>
-		<h2>Business analysis — how each option may affect Mike's business</h2>
-		<div class="cards">
-			<div class="card">
-				<strong>Draft 1 — Premium positioning</strong>
-				<ul>
-					<li>Attracts higher-paying customers seeking premium results.</li>
-					<li>Best for differentiating from low-cost competitors; supports higher pricing and upsells.</li>
-					<li>May reduce volume of budget-conscious leads; needs high-quality photos and reviews to justify price.</li>
-				</ul>
-			</div>
-			<div class="card">
-				<strong>Draft 2 — Direct conversion / tactical</strong>
-				<ul>
-					<li>Clear pricing and strong CTAs likely increase booking conversions and reduce friction.</li>
-					<li>Works well for busy owners who decide based on price and quick booking.</li>
-					<li>Risk: feels less personal — may lower perceived trust vs a local approach.</li>
-				</ul>
-			</div>
-			<div class="card">
-				<strong>Draft 3 — Local / trust-driven</strong>
-				<ul>
-					<li>Builds rapport with local customers (community-first messaging).</li>
-					<li>Good for repeat business and referrals; emphasizes Mike as a person rather than a brand.</li>
-					<li>May convert slightly slower than Draft 2 but can increase CLTV (customer lifetime value).</li>
-				</ul>
-			</div>
-		</div>
-	</section>
+<!-- DRAFTS -->
+<section id="drafts">
+  <div class="container--wide">
+    <div class="section-tag">01 — The Three Drafts</div>
+    <h2>Three directions, three different customers</h2>
+    <p class="lead">Each draft is targeting a different version of your ideal client. The design isn't decoration. It's a signal. Here's what each one communicates before anyone reads a single word.</p>
 
-	<section>
-		<h2>Practical recommendations</h2>
-		<ul>
-			<li>If Mike wants to raise prices and target premium customers: pick <strong>Draft 1</strong>. Invest in high-quality photos and a short hero video; collect 5–10 strong before/after shots and 3–5 video clips.</li>
-			<li>If Mike wants more immediate bookings and simple messaging: pick <strong>Draft 2</strong>. Keep pricing visible and use a clear "Call or Text" CTA — consider adding a simple booking form or link to scheduling (Calendly/Turo style) in future.</li>
-			<li>If Mike prioritizes local trust, referrals, and repeat customers: pick <strong>Draft 3</strong>. Emphasize testimonials, neighborhoods served, and a personable About section. Offer a loyalty discount or referral credit to capture repeat business.</li>
-			<li>Hybrid option: combine Draft 2's clear booking/pricing with Draft 3's trust elements and Draft 1's premium photography — i.e., bold CTAs + personable copy + premium images.</li>
-		</ul>
-	</section>
+    <div class="draft-grid">
+      <div class="draft-card">
+        <div class="draft-card-img-wrap">
+          <img src="draft1.png" alt="Draft 1 screenshot" class="draft-card-img">
+          <div class="draft-badge badge-1">Draft 1</div>
+        </div>
+        <div class="draft-card-body">
+          <div class="draft-card-title">The Premium Play</div>
+          <div class="draft-card-vibe">Dark, gold, cinematic. Luxury at a glance.</div>
+          <ul class="draft-card-traits">
+            <li>Attracts customers who judge quality before price</li>
+            <li>Sets up higher price points without needing to justify them</li>
+            <li>Custom cursor, film-grain texture, editorial feel</li>
+            <li>Best fit: Tesla owners, newer trucks, high-end imports</li>
+          </ul>
+          <a href="draft1.html" class="draft-link">View Draft 1</a>
+        </div>
+      </div>
 
-	<section>
-		<h2>Screenshots (placeholders)</h2>
-		<p>I can't capture screenshots from here. If you can provide screenshots, drop them in this folder and name them <em>draft1.png</em>, <em>draft2.png</em>, <em>draft3.png</em>. I will embed them here. Alternatively I can guide you to take screenshots.</p>
-		<div class="screens">
-			<div class="simg">draft1.png (drop here)</div>
-			<div class="simg">draft2.png (drop here)</div>
-			<div class="simg">draft3.png (drop here)</div>
-		</div>
-	</section>
+      <div class="draft-card">
+        <div class="draft-card-img-wrap">
+          <img src="draft2.png" alt="Draft 2 screenshot" class="draft-card-img">
+          <div class="draft-badge badge-2">Draft 2</div>
+        </div>
+        <div class="draft-card-body">
+          <div class="draft-card-title">The Direct Closer</div>
+          <div class="draft-card-vibe">Red, black, bold. Built to convert fast.</div>
+          <ul class="draft-card-traits">
+            <li>Price front and center; no ambiguity</li>
+            <li>Strong CTAs and tight layout drives bookings</li>
+            <li>Feels like a serious, professional operation</li>
+            <li>Best fit: busy customers who decide on price and convenience</li>
+          </ul>
+          <a href="draft2.html" class="draft-link">View Draft 2</a>
+        </div>
+      </div>
 
-	<section>
-		<h2>Quick next steps I can take</h2>
-		<ul>
-			<li>Embed screenshots if you upload them to this folder.</li>
-			<li>Generate compressed hero images and an optimized gallery from provided photos.</li>
-			<li>Implement a hybrid page combining the chosen elements (I can scaffold that page).</li>
-		</ul>
-		<p>Please tell me which next step you'd like, or upload screenshots and I will embed them and finish recommendations.</p>
-	</section>
+      <div class="draft-card">
+        <div class="draft-card-img-wrap">
+          <img src="draft3.png" alt="Draft 3 screenshot" class="draft-card-img">
+          <div class="draft-badge badge-3">Draft 3</div>
+        </div>
+        <div class="draft-card-body">
+          <div class="draft-card-title">The Local Favorite</div>
+          <div class="draft-card-vibe">Yellow, warm, approachable. Mike-as-a-person.</div>
+          <ul class="draft-card-traits">
+            <li>You feel like a neighbor, not a service provider</li>
+            <li>Builds trust and repeat business over time</li>
+            <li>Testimonials and personality carry this design</li>
+            <li>Best fit: families, neighbors, Nextdoor referrals</li>
+          </ul>
+          <a href="draft3.html" class="draft-link">View Draft 3</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <h3 style="margin-top:56px;font-size:1rem;font-weight:700;margin-bottom:4px;">Feature comparison at a glance</h3>
+    <p style="font-size:0.85rem;color:#888;margin-bottom:0;">What each draft does and doesn't do for you.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="th-1">Draft 1 — Premium</th>
+          <th class="th-2">Draft 2 — Direct</th>
+          <th class="th-3">Draft 3 — Local</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Price visibility</td>
+          <td>Subtle — prices are present but not the focus</td>
+          <td>Front and center — price tags on every card</td>
+          <td>Present — listed clearly but softly</td>
+        </tr>
+        <tr>
+          <td>Booking CTA</td>
+          <td>"Call or Text Mike" — personal, warm</td>
+          <td>"Book Now" — urgent, repeated often</td>
+          <td>"Call or Text Mike" — personal, friendly</td>
+        </tr>
+        <tr>
+          <td>Photography role</td>
+          <td>Hero-level — photos are art direction</td>
+          <td>Gallery-focused — before/after proof</td>
+          <td>Supporting — photos show, Mike sells</td>
+        </tr>
+        <tr>
+          <td>Brand personality</td>
+          <td>High-end studio, selective clientele</td>
+          <td>No-nonsense local pro, gets it done</td>
+          <td>Guy next door who's really good at this</td>
+        </tr>
+        <tr>
+          <td>Trust building</td>
+          <td>Implied by aesthetic and quality</td>
+          <td>Built on transparency (price + reviews)</td>
+          <td>Built on personality, referrals, community</td>
+        </tr>
+        <tr>
+          <td>Mobile detailing emphasis</td>
+          <td>Mentioned, not the lead message</td>
+          <td>Prominent — "we come to you" angle</td>
+          <td>Strong — "no drop-off, no hassle" is the pitch</td>
+        </tr>
+        <tr>
+          <td>Upsell potential</td>
+          <td>High — premium brand supports premium add-ons</td>
+          <td>Medium — clear add-on cards help</td>
+          <td>Medium — trust earns the upsell over time</td>
+        </tr>
+        <tr>
+          <td>Customer expected to spend</td>
+          <td>$250+ per visit (luxury vehicle segment)</td>
+          <td>$150–250 (middle market, clear pricing)</td>
+          <td>$150–200, repeat, referral model</td>
+        </tr>
+        <tr>
+          <td>Needs to work best</td>
+          <td>Strong before/after photos, a few testimonials</td>
+          <td>A real booking link or scheduling tool</td>
+          <td>5–10 strong Google reviews, a real headshot</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WHO IS IT FOR -->
+    <h3 style="margin-top:56px;font-size:1rem;font-weight:700;margin-bottom:20px;">Which draft is right for you?</h3>
+    <div class="for-cards">
+      <div class="for-card">
+        <div class="for-card-num">1</div>
+        <span class="for-card-label label-1">Draft 1 — Premium</span>
+        <h3>Choose this if you want to attract fewer, higher-paying clients</h3>
+        <p>Draft 1 tells people before they read anything: this guy charges more because he's better. That positioning only works if your photos are excellent and your reviews back it up.</p>
+        <ul>
+          <li>You're targeting Tesla, new trucks, imports</li>
+          <li>You want to push $300+ full details</li>
+          <li>You're willing to invest in photography</li>
+          <li>You want a brand that grows with ceramic coating and paint correction services</li>
+        </ul>
+      </div>
+      <div class="for-card">
+        <div class="for-card-num">2</div>
+        <span class="for-card-label label-2">Draft 2 — Direct</span>
+        <h3>Choose this if you want more bookings, faster, right now</h3>
+        <p>Draft 2 is built to close. Customers who land on this page know exactly what they'll pay and exactly what to do next. That removes friction and increases conversions.</p>
+        <ul>
+          <li>You want volume over margin to start</li>
+          <li>You're comfortable with public pricing</li>
+          <li>You want a site that works as a booking tool</li>
+          <li>You plan to get a real scheduling system in place</li>
+        </ul>
+      </div>
+      <div class="for-card">
+        <div class="for-card-num">3</div>
+        <span class="for-card-label label-3">Draft 3 — Local</span>
+        <h3>Choose this if you want to build the kind of business that runs on word of mouth</h3>
+        <p>Draft 3 leads with Mike as a person, not just a service. That's a long game, but it's the most durable kind of local business. Customers become regulars. Regulars become referrers.</p>
+        <ul>
+          <li>You're already known in Ferndale/Lynden circles</li>
+          <li>Your best leads come from friends and neighbors</li>
+          <li>You're building a reputation, not just a customer list</li>
+          <li>You have (or can get) real testimonials quickly</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>My honest take</h3>
+      <p>If I were building this business, I'd start with Draft 2 because it gets bookings now. But I'd layer in Draft 1's visual quality and Draft 3's personality over time. The hybrid of all three is the end goal. That said, you need to pick one direction to launch, and Draft 2 gives you the clearest path to revenue fastest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND DECISIONS -->
+<section id="brand">
+  <div class="container">
+    <div class="section-tag">02 — Brand Decisions</div>
+    <h2>You need to answer these before we go live</h2>
+    <p class="lead">A website can't do its job until you've nailed these. I'll give you my suggestions, but these are your calls to make. Take your time with them because once you're on Google, changing a name or domain is a bigger deal than it seems.</p>
+
+    <div class="questions-grid">
+
+      <div class="q-box">
+        <span class="q-box-num">Question 01 — Business Name</span>
+        <h3>What do you want to be called?</h3>
+        <p>The current placeholder is "Apex Detail Co." That's solid. It's strong, short, and searchable. But before we make it permanent, consider: does it feel like you? Is there something more specific to Ferndale or Whatcom County that could build local loyalty? Here are a few directions:</p>
+        <ul class="suggestions">
+          <li>
+            <span class="opt">KEEP</span>
+            <span>Apex Detail Co. <span class="sub">Clean, professional, works everywhere. Strong with Draft 1 or 2.</span></span>
+          </li>
+          <li>
+            <span class="opt">LOCAL</span>
+            <span>Whatcom Detail Co. <span class="sub">Signals you're from here. Ranks well locally on Google.</span></span>
+          </li>
+          <li>
+            <span class="opt">LOCAL</span>
+            <span>Ferndale Detail <span class="sub">Hyper-local. Great for Nextdoor and community word of mouth.</span></span>
+          </li>
+          <li>
+            <span class="opt">PERSONAL</span>
+            <span>Mike's Detail Co. <span class="sub">If your whole brand is "Mike" — the guy, the story — this works great with Draft 3.</span></span>
+          </li>
+          <li>
+            <span class="opt">BOLD</span>
+            <span>Apex Mobile Detail <span class="sub">Emphasizes the mobile angle, which is a real differentiator in this market.</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="q-box">
+        <span class="q-box-num">Question 02 — Slogan</span>
+        <h3>What's the one sentence that defines you?</h3>
+        <p>A slogan isn't marketing fluff. It's the fastest way to tell a stranger what makes you different. Right now the drafts use "Premium mobile detailing that transforms the ordinary into the extraordinary." That's fine but it could be sharper. Here are alternatives based on your actual strengths:</p>
+        <ul class="suggestions">
+          <li>
+            <span class="opt">MOBILE</span>
+            <span>"We come to you. No drop-off, no hassle." <span class="sub">Simple and clear. Mobile is your biggest differentiator.</span></span>
+          </li>
+          <li>
+            <span class="opt">QUALITY</span>
+            <span>"Your car, spotless. We come to you." <span class="sub">Result-focused. Works well with before/after photos.</span></span>
+          </li>
+          <li>
+            <span class="opt">LOCAL</span>
+            <span>"Whatcom County's detail guy." <span class="sub">Owning the region. Personal and specific.</span></span>
+          </li>
+          <li>
+            <span class="opt">PREMIUM</span>
+            <span>"Precision detailing. Right in your driveway." <span class="sub">Premium feel, still emphasizes the mobile angle.</span></span>
+          </li>
+          <li>
+            <span class="opt">PUNCHY</span>
+            <span>"We don't cut corners. Your car proves it." <span class="sub">Quality-first, slightly bold. Fits Draft 1 or 2.</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="q-box">
+        <span class="q-box-num">Question 03 — Domain Name</span>
+        <h3>What's your web address going to be?</h3>
+        <p>Your domain affects how easy it is to find you on Google and how easy it is to share by word of mouth. Short, specific, and memorable wins. I'd recommend checking these in order of preference. I can register and host any of these for you.</p>
+        <ul class="suggestions">
+          <li>
+            <span class="opt">BEST</span>
+            <span>apexdetailco.com <span class="sub">Clean match to the business name. Easy to remember, easy to say.</span></span>
+          </li>
+          <li>
+            <span class="opt">GOOD</span>
+            <span>apexdetail.com <span class="sub">Shorter. Works if the full version is taken.</span></span>
+          </li>
+          <li>
+            <span class="opt">LOCAL</span>
+            <span>whatcomdetail.com <span class="sub">Strong local SEO signal. Ranks well for "Whatcom County detailing."</span></span>
+          </li>
+          <li>
+            <span class="opt">LOCAL</span>
+            <span>ferndalemobiledetail.com <span class="sub">Hyper-targeted. Excellent for Google local search.</span></span>
+          </li>
+          <li>
+            <span class="opt">OPTION</span>
+            <span>apexdetailwhatcom.com <span class="sub">Combines brand name and location. Good SEO, a bit long.</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="q-box">
+        <span class="q-box-num">Question 04 — Your Story</span>
+        <h3>What's the version of your story that actually connects?</h3>
+        <p>Every draft has an "About" section but right now it's filler. The most effective thing you can do for your business online is tell a real story. People book Mike, not just a detail service. Consider answering these honestly and I'll write it up properly:</p>
+        <ul class="suggestions">
+          <li>
+            <span class="opt">ASK</span>
+            <span>Why did you start this? What pushed you to go out on your own? <span class="sub">Real answers here build real trust.</span></span>
+          </li>
+          <li>
+            <span class="opt">ASK</span>
+            <span>What do you do that most detail shops don't? <span class="sub">Mobile, attention to detail, products you use, turnaround time?</span></span>
+          </li>
+          <li>
+            <span class="opt">ASK</span>
+            <span>Who's your best customer? What does their car look like when you're done vs. when you started? <span class="sub">This is the core of your testimonial strategy.</span></span>
+          </li>
+          <li>
+            <span class="opt">ASK</span>
+            <span>What area do you actually cover? Are there towns you don't want to drive to? <span class="sub">Being specific here is actually a trust signal.</span></span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container--wide">
+    <div class="section-tag">03 — Services to Offer</div>
+    <h2>What to put on the menu</h2>
+    <p class="lead">Right now the drafts show full detail (car and SUV/truck), fleet cleaning, and a few add-ons. That's a reasonable start. But there are services the Whatcom County market is actively searching for that you could add without a huge equipment investment. Here's what I'd recommend and why, with market pricing to help you figure out where to set your rates.</p>
+
+    <div class="services-grid">
+
+      <div class="service-item">
+        <div class="service-item-name">Full Interior Detail <span class="service-tag tag-anchor">Core</span></div>
+        <div class="service-item-desc">Vacuum, steam clean, wipe-down, windows, odor treatment. Your bread and butter. Every customer needs this eventually.</div>
+        <span class="service-price">$150–$225 sedan / $200–$275 SUV</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Full Exterior Detail <span class="service-tag tag-anchor">Core</span></div>
+        <div class="service-item-desc">Hand wash, clay bar, polish, wax or sealant, tire dressing, windows. The most-booked exterior service in this region.</div>
+        <span class="service-price">$125–$200 sedan / $175–$250 SUV</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Full Detail (Interior + Exterior) <span class="service-tag tag-anchor">Core</span></div>
+        <div class="service-item-desc">The complete package. This is your primary offer. Combine both services for a bundled price that feels like a deal but protects your margin.</div>
+        <span class="service-price">$225–$350 sedan / $300–$500 SUV/Truck</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Engine Bay Cleaning <span class="service-tag tag-upsell">Upsell</span></div>
+        <div class="service-item-desc">Degreasing and detailing the engine compartment. Customers are impressed by this. High perceived value, 45–60 minutes of work. A strong add-on because most shops skip it.</div>
+        <span class="service-price">$80–$150 add-on</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Paint Decontamination + Wax <span class="service-tag tag-upsell">Upsell</span></div>
+        <div class="service-item-desc">Clay bar to remove embedded contamination, followed by carnauba wax or synthetic sealant. The PNW climate (rain, tree sap, industrial fallout near I-5) makes this genuinely valuable here.</div>
+        <span class="service-price">$100–$175 add-on</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Odor Elimination <span class="service-tag tag-upsell">Upsell</span></div>
+        <div class="service-item-desc">Ozone treatment or enzyme-based odor removal for pet smells, smoke, mildew. High demand with families and pet owners. Can be offered as a standalone or bundled.</div>
+        <span class="service-price">$75–$150 standalone</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Headlight Restoration <span class="service-tag tag-upsell">Upsell</span></div>
+        <div class="service-item-desc">Sanding and polishing yellowed/cloudy headlights. Customers are often amazed by the result. Low material cost, high perceived value. Takes about 45 minutes per pair.</div>
+        <span class="service-price">$65–$100 per pair</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Ceramic Coating <span class="service-tag tag-premium">Premium</span></div>
+        <div class="service-item-desc">Multi-year paint protection that repels water, dirt, and contaminants. High-margin, high-value. The Bellingham market is actively searching for this. You'll need a controlled space (garage) to apply properly.</div>
+        <span class="service-price">$600–$1,600 depending on correction level</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Paint Correction <span class="service-tag tag-premium">Premium</span></div>
+        <div class="service-item-desc">Machine polishing to remove swirls, scratches, and oxidation before ceramic coating or for customers who just want their paint looking new again. Commands premium pricing and attracts enthusiast-level clients.</div>
+        <span class="service-price">$300–$1,000 depending on severity</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Fleet Cleaning <span class="service-tag tag-anchor">Core</span></div>
+        <div class="service-item-desc">Regular recurring service for contractors, tradespeople, or small businesses with multiple vehicles. Steady, predictable income. Lock in contracts early and this becomes your floor revenue.</div>
+        <span class="service-price">Negotiate per vehicle count</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Seasonal Spring Refresh <span class="service-tag tag-seasonal">Seasonal</span></div>
+        <div class="service-item-desc">Market this every March/April: full exterior to remove winter road grime, salt residue, and pollen. The PNW spring pollen season is brutal on paint. Name it, promote it, repeat it every year.</div>
+        <span class="service-price">Bundle at 10–15% off full detail rate</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-item-name">Winter Prep Package <span class="service-tag tag-seasonal">Seasonal</span></div>
+        <div class="service-item-desc">Interior deep clean plus exterior sealant or wax to protect paint from rain and road grit through winter. Promote in September/October. Customers who buy this once tend to come back every year.</div>
+        <span class="service-price">Bundle at full detail + sealant rate</span>
+      </div>
+
+    </div>
+
+    <div class="callout" style="margin-top:40px;">
+      <h3>A note on ceramic coating</h3>
+      <p>This is the highest-margin service in your category. Whatcom County customers are actively searching for it. You don't need a shop to start, just a clean garage and the right training. If you add nothing else from this list, add ceramic coating. Even one job per month at $800+ changes your math significantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET ANALYSIS -->
+<section id="market">
+  <div class="container--wide">
+    <div class="section-tag">04 — Market Analysis</div>
+    <h2>What the Whatcom County market actually looks like</h2>
+    <p class="lead">I pulled real data on your competitors, the local economy, what customers are searching for, and where the opportunities are. This is information most people starting a business never bother to gather. Use it.</p>
+
+    <!-- STATS -->
+    <div class="market-grid" style="margin-top:40px;">
+      <div class="market-card">
+        <h3>Local Market Numbers</h3>
+        <div class="market-stat">
+          <div class="market-stat-num">$225</div>
+          <div class="market-stat-label">Average full detail price for a sedan in Whatcom County (based on local competitor data)</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-stat-num">30%</div>
+          <div class="market-stat-label">Average cost advantage mobile detailers have over shop-based operations (due to lower overhead)</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-stat-num">24%</div>
+          <div class="market-stat-label">How much higher Bellingham's cost of living is vs. Washington state average — supports premium pricing</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-stat-num">2 cars</div>
+          <div class="market-stat-label">Average vehicle ownership per Whatcom County household. That's your addressable market, doubled per customer.</div>
+        </div>
+        <div class="market-stat">
+          <div class="market-stat-num">91%</div>
+          <div class="market-stat-label">Residents who depend on a personal vehicle to commute — almost everyone here needs a car and cares about it</div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <h3>What Customers Are Searching For</h3>
+        <ul>
+          <li><strong>"auto detailing near me"</strong> — highest volume, ready to book</li>
+          <li><strong>"mobile car detailing Bellingham"</strong> — your primary target keyword</li>
+          <li><strong>"mobile car detailing Ferndale WA"</strong> — local intent, less competition</li>
+          <li><strong>"ceramic coating near me"</strong> — growing fast, higher intent</li>
+          <li><strong>"engine bay detailing Whatcom County"</strong> — low competition, exact match</li>
+          <li><strong>"best auto detailing Bellingham WA"</strong> — review-driven, Google Maps</li>
+          <li><strong>"car detailing Lynden Washington"</strong> — underserved area, opportunity</li>
+          <li><strong>"headlight restoration near me"</strong> — low competition, easy win</li>
+          <li><strong>"paint correction Bellingham"</strong> — premium segment, growing</li>
+          <li><strong>"car detailing Birch Bay"</strong> — seasonal population spike in summer</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COMPETITORS -->
+    <h3 style="margin-top:56px;font-size:1rem;font-weight:700;margin-bottom:4px;">Who you're up against</h3>
+    <p style="font-size:0.85rem;color:#888;margin-bottom:0;">The market is active but fragmented. No single player dominates. That's good news for you.</p>
+    <div class="comp-list">
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">Karim's Mobile Detailing</div>
+          <span class="comp-type">Mobile · Bellingham</span>
+        </div>
+        <div class="comp-desc">Most visible mobile operator in Bellingham. Full exterior/interior, ceramic coating, free estimates. Well-reviewed and established. The one to beat for top Google placement.</div>
+        <div class="comp-threat threat-hi">High</div>
+      </div>
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">Grand Finish Details</div>
+          <span class="comp-type">Mobile + Shop · Whatcom &amp; Skagit County</span>
+        </div>
+        <div class="comp-desc">Covers both counties, offers ceramic coating and steam cleaning. Good online presence. Broad coverage means they're spread thin in any single area.</div>
+        <div class="comp-threat threat-hi">High</div>
+      </div>
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">Final Touch Auto Spa</div>
+          <span class="comp-type">Shop · Bellingham</span>
+        </div>
+        <div class="comp-desc">Facility-based with ceramic coating and PPF. High-quality work but you have to go to them. Your mobile advantage is real here — their customers have to plan a drop-off day.</div>
+        <div class="comp-threat threat-mid">Medium</div>
+      </div>
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">Victory Lap Mobile Detailing</div>
+          <span class="comp-type">Mobile · Bellingham/Ferndale/Lynden</span>
+        </div>
+        <div class="comp-desc">Covers your exact service area. Less established than Karim's. Beating them is about showing better work (photos), better reviews, and better local presence.</div>
+        <div class="comp-threat threat-mid">Medium</div>
+      </div>
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">A-1 Mobile Auto Detailing</div>
+          <span class="comp-type">Mobile · Full County</span>
+        </div>
+        <div class="comp-desc">Covers Bellingham, Ferndale, Lynden, Blaine. Broad coverage, likely thinner on quality signals (reviews, photos). Easy to outrank on Google with focused local SEO.</div>
+        <div class="comp-threat threat-lo">Lower</div>
+      </div>
+      <div class="comp-item">
+        <div>
+          <div class="comp-name">Peas in a Pod Mobile Detailing</div>
+          <span class="comp-type">Mobile · Blaine/Birch Bay/Ferndale</span>
+        </div>
+        <div class="comp-desc">Covers your backyard. Published pricing ($225 sedan full detail) makes them a useful benchmark. Good Nextdoor presence. Beatable on photography, branding, and ceramic coating offer.</div>
+        <div class="comp-threat threat-lo">Lower</div>
+      </div>
+    </div>
+
+    <!-- SEASONAL -->
+    <div class="market-grid" style="margin-top:40px;">
+      <div class="market-card">
+        <h3>Seasonal Patterns — Plan Your Marketing Around These</h3>
+        <ul>
+          <li><strong>March / April:</strong> Spring pollen and tree sap season. PNW trees coat cars with sticky residue. Push "Spring Refresh" packages starting February.</li>
+          <li><strong>May / June:</strong> Busy families prepping for summer road trips. Full detail demand peaks. Ceramic coating interest spikes for summer protection.</li>
+          <li><strong>July / August:</strong> Summer population surge around Birch Bay. Short-season tourist traffic. Bug splatter and UV exposure bring people in.</li>
+          <li><strong>September / October:</strong> Best time to push winter prep packages. Leaf tannin stains, early rain, and road grit create urgency. This is your upsell season.</li>
+          <li><strong>November / February:</strong> Slowest period. Use it to lock in fleet contracts and collect reviews. Consider a "winter special" to keep cash flowing.</li>
+        </ul>
+      </div>
+      <div class="market-card">
+        <h3>Where to Find Customers — Channel Priority</h3>
+        <ul style="counter-reset: channel;">
+          <li><strong>1. Google Business Profile (GBP):</strong> Non-negotiable. Most "detailing near me" searches end here. You need photos, reviews, and weekly posts to rank. I'll set this up for you.</li>
+          <li><strong>2. Instagram:</strong> Before/after photos are the single best content type for detailing. You already have great before/afters. Start posting. Reels get reach for free.</li>
+          <li><strong>3. Nextdoor:</strong> Ferndale and Lynden are tight communities. Your neighbors trust recommendations here more than anywhere else. Create a free business page immediately.</li>
+          <li><strong>4. Facebook:</strong> Community groups and local Facebook pages are where Whatcom County families make service decisions. Worth maintaining a business page.</li>
+          <li><strong>5. Referral Program:</strong> Offer existing customers $20 off their next detail for every referral who books. Word of mouth is already working for you, this just accelerates it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:40px;">
+      <h3>The real opportunity in this market</h3>
+      <p>The Ferndale-to-Lynden corridor is underserved relative to Bellingham proper. Most competitors center their marketing in Bellingham. If you own "Ferndale, Lynden, Birch Bay" in local search results, you can carve out a defensible territory before the bigger players think to focus there. That's a real and achievable goal within six months of going live with a solid website and a Google Business Profile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section>
+  <div class="container">
+    <div class="section-tag">05 — My Recommendations</div>
+    <h2>If I were making this call</h2>
+    <p class="lead">Here's what I'd do, in plain terms. Take what's useful, push back on what doesn't feel right. That's what the conversation is for.</p>
+
+    <div class="rec-box rec-red" style="margin-top:40px;">
+      <h3>Launch with Draft 2, then evolve toward Draft 1</h3>
+      <p>Draft 2 converts fastest. It gives customers what they need to make a decision: price, service, and a clear action. Start there. As your reviews build and your photos get stronger, you have the option to shift toward Draft 1's premium positioning and charge accordingly. Launching with Draft 1 before you have the reviews and photos to back it up is a risk.</p>
+    </div>
+
+    <div class="rec-box rec-gold">
+      <h3>Add ceramic coating as a service within 90 days</h3>
+      <p>This is the highest-margin thing you can offer. Even one job per week at $800 adds over $40,000 a year to your revenue. The Bellingham market is actively searching for it. If you can get certified and set up a clean environment to apply it, this changes your business model faster than anything else.</p>
+    </div>
+
+    <div class="rec-box">
+      <h3>Get 10 Google reviews before you launch the site</h3>
+      <p>A website without reviews is a business without credibility. Before we push anything live, text your last 10 customers and ask them to leave a review. Give them the direct link. A business with 10 solid reviews outranks one with zero reviews almost every time, regardless of how good the website looks.</p>
+    </div>
+
+    <div class="rec-box">
+      <h3>Own "Ferndale mobile detailing" in local search</h3>
+      <p>The big competitors are fighting over "Bellingham detailing." You're in Ferndale. Make that your keyword territory. Your Google Business Profile, your website copy, and your Nextdoor presence should all reinforce that you're the Ferndale-area detailer. It's a smaller pond, but you can own it.</p>
+    </div>
+
+    <div class="rec-box rec-yellow">
+      <h3>Lock in a fleet client in the first 60 days</h3>
+      <p>One contractor with four trucks that you detail twice a month is $800–$1,200 in predictable income. That's your floor. Reach out to local contractors, tradespeople, and small businesses in the Ferndale/Lynden area. They hate managing dirty work vehicles and most of them don't have a current solution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="next">
+  <div class="container">
+    <div class="section-tag">06 — What Happens Next</div>
+    <h2>Clear next steps, in order</h2>
+    <p class="lead">Here's what I need from you, and what I'll take care of once you give me the go-ahead.</p>
+
+    <ol class="steps-list">
+      <li class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>You: Pick a draft direction</h3>
+          <p>Look at all three. Think about what kind of customer you want more of. Tell me which draft feels most like the business you're building. You don't have to be 100% sure, we can mix elements from all three, but I need a direction to anchor everything else.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>You: Answer the brand questions</h3>
+          <p>Name, slogan, domain. I listed them in section two. Even rough answers help. Text me what you're thinking and I'll refine the language. Don't overthink the slogan, sometimes the best ones are obvious in hindsight.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>You: Start collecting Google reviews now</h3>
+          <p>Don't wait for the site to be live. Text your past customers this week. A Google Business Profile with 10+ reviews changes your visibility dramatically. I'll set up the GBP profile for you once I have the business name locked.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Me: Register your domain and set up hosting</h3>
+          <p>Once you've picked a name, I'll get your domain registered and set up on solar-powered hosting through Bellingham Hosting. You'll be on a fast, reliable server with zero carbon footprint. Cost is $10/month for everything.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Me: Finalize the chosen draft with your real content</h3>
+          <p>I'll take the draft you pick and fill it in with your actual business name, real photos, final pricing, and your actual story. I'll also connect a real booking link (I recommend Square Appointments or Calendly to start, both have free plans) and wire up your contact form.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <h3>Me: Set up your Google Business Profile</h3>
+          <p>I'll create and optimize your GBP listing with your service area, hours, services, and first set of photos. This is honestly as important as the website for local search. Once it's live, customers searching "detailing near me" in Whatcom County will find you.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">07</div>
+        <div class="step-content">
+          <h3>Both: Launch, then monitor</h3>
+          <p>Once everything is live, we'll watch how customers interact with the site and adjust. If a certain service page isn't converting, we'll change the copy. If people aren't clicking the booking button, we'll move it. A website isn't a one-time thing. It should improve as your business does.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div style="margin-top:48px;padding:32px;border:1.5px solid var(--border);background:var(--bg-off);">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin-bottom:12px;">Questions? Let's talk.</div>
+      <div style="font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px;">Daniel Tucker — Bellingham Hosting</div>
+      <div style="font-size:0.88rem;color:#666;">hello@bellinghamhosting.com &nbsp;·&nbsp; bellinghamhosting.com</div>
+      <div style="font-size:0.82rem;color:#999;margin-top:10px;">Ferndale, WA · Solar-powered web hosting and design for local businesses</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <span>Prepared by Daniel Tucker · Bellingham Hosting · March 2025</span>
+      <span>This document is private and intended for Mike P. only.</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
