@@ -475,8 +475,10 @@ nav.scrolled { border-bottom-color: rgba(201,168,76,0.35); }
   transform: translateX(100%);
   filter: saturate(1) brightness(1);
 }
-.gallery-pair:hover .pair-before { transform: translateX(-100%); filter: saturate(0.5) brightness(0.7); }
-.gallery-pair:hover .pair-after { transform: translateX(0); }
+.gallery-pair:hover .pair-before,
+.gallery-pair.flipped .pair-before { transform: translateX(-100%); filter: saturate(0.5) brightness(0.7); }
+.gallery-pair:hover .pair-after,
+.gallery-pair.flipped .pair-after { transform: translateX(0); }
 .pair-label {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -495,13 +497,15 @@ nav.scrolled { border-bottom-color: rgba(201,168,76,0.35); }
   align-items: center;
   transition: background 0.35s;
 }
-.gallery-pair:hover .pair-label { background: var(--gold); color: var(--black); }
+.gallery-pair:hover .pair-label,
+.gallery-pair.flipped .pair-label { background: var(--gold); color: var(--black); }
 .pair-label-tag {
   font-size: 0.6rem;
   opacity: 0.6;
   transition: opacity 0.35s;
 }
-.gallery-pair:hover .pair-label-tag { opacity: 1; }
+.gallery-pair:hover .pair-label-tag,
+.gallery-pair.flipped .pair-label-tag { opacity: 1; }
 
 /* PROCESS */
 .process {
@@ -963,6 +967,7 @@ footer {
 }
 #lightbox-close:hover { transform: scale(1.1); background: var(--gold-light); }
 img[src^="images/"] { cursor: zoom-in; }
+.gallery-pair img { cursor: pointer; }
 </style>
 </head>
 <body>
@@ -1311,7 +1316,14 @@ window.addEventListener('scroll', () => {
     document.body.style.overflow = '';
   }
   document.querySelectorAll('img[src^="images/"]').forEach(img => {
-    img.addEventListener('click', () => open(img.src, img.alt));
+    if (!img.closest('.gallery-pair') && !img.closest('.ba-slider')) {
+      img.addEventListener('click', () => open(img.src, img.alt));
+    }
+  });
+
+  // Click to flip before/after pairs
+  document.querySelectorAll('.gallery-pair').forEach(pair => {
+    pair.addEventListener('click', () => pair.classList.toggle('flipped'));
   });
   document.getElementById('lightbox-overlay').addEventListener('click', close);
   document.getElementById('lightbox-img').addEventListener('click', close);
