@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bellingham Hosting – Web Hosting &amp; Web Design in Bellingham, WA</title>
 <meta name="description" content="Solar-powered web hosting and custom web design for small businesses in Bellingham, Ferndale, and Whatcom County, WA. Local, affordable, and built to last.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="canonical" href="https://bellinghamhosting.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bellinghamhosting.com/">
@@ -559,6 +562,19 @@
     border-radius: 50px;
   }
   .client-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+  .client-card-thumb {
+    margin: -2rem -2rem 0.75rem -2rem;
+    border-radius: 17px 17px 0 0;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+  .client-card-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .client-card:hover .client-card-thumb img { transform: scale(1.04); }
 
   /* ─── FAQ ─── */
   .faq { background: white; }
@@ -906,6 +922,7 @@
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="web-design.html">Web Design</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#clients">Clients</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Get Started</a></li>
@@ -1106,6 +1123,9 @@
     <p class="section-sub">Real local businesses, hosted on real local servers.</p>
     <div class="clients-grid">
       <div class="client-card">
+        <div class="client-card-thumb">
+          <img src="screenshots/supons.png" alt="Supon's website" loading="lazy">
+        </div>
         <div>
           <span class="client-tag">Restaurant</span>
         </div>
@@ -1114,12 +1134,26 @@
         <p>A beloved local eatery bringing great food to Whatcom County, with a website to match.</p>
       </div>
       <div class="client-card">
+        <div class="client-card-thumb">
+          <img src="screenshots/ferndalehoa.png" alt="Ferndale HOA website" loading="lazy">
+        </div>
         <div>
           <span class="client-tag">Non-Profit / HOA</span>
         </div>
         <div class="client-name">Ferndale HOA</div>
         <a class="client-url" href="https://ferndalehoa.com" target="_blank" rel="noopener">ferndalehoa.com ↗</a>
         <p>Keeping the Ferndale community connected with a simple, easy-to-navigate community website.</p>
+      </div>
+      <div class="client-card">
+        <div class="client-card-thumb">
+          <img src="screenshots/pinnacle.png" alt="Pinnacle Auto Detail website" loading="lazy">
+        </div>
+        <div>
+          <span class="client-tag">Auto Detail</span>
+        </div>
+        <div class="client-name">Pinnacle Auto Detail</div>
+        <a class="client-url" href="https://www.pinnacleautodetail.com" target="_blank" rel="noopener">pinnacleautodetail.com ↗</a>
+        <p>A bold, premium site for Ferndale's top auto detailing shop — built to convert serious car owners into clients.</p>
       </div>
     </div>
   </div>
@@ -1236,7 +1270,7 @@
   <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
   <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
   <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener" style="color:var(--sky-light);font-weight:700;opacity:0.8;">Daniel's LinkedIn ↗</a></p>
-  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2025 BellinghamHosting.com · <a href="https://bellinghamhosting.com">bellinghamhosting.com</a></p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2026 BellinghamHosting.com · <a href="https://bellinghamhosting.com">bellinghamhosting.com</a> · <a href="legal.html">Legal</a></p>
 </footer>
 
 <script>

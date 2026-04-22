@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web Design Bellingham WA – Custom Websites for Local Businesses | Bellingham Hosting</title>
 <meta name="description" content="Custom web design for small businesses in Bellingham, Ferndale, and Whatcom County, WA. Hand-coded, mobile-friendly sites starting at $499. 20 years of experience.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="canonical" href="https://bellinghamhosting.com/web-design.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bellinghamhosting.com/web-design.html">
@@ -376,6 +379,19 @@
   }
   .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow); }
   .portfolio-card .port-icon { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+  .port-thumb {
+    margin: -2rem -2rem 1rem -2rem;
+    border-radius: 17px 17px 0 0;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+  .port-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .portfolio-card:hover .port-thumb img { transform: scale(1.04); }
   .portfolio-card h3 {
     font-family: 'Fredoka One', cursive;
     font-size: 1.3rem;
@@ -451,6 +467,7 @@
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#pricing">Pricing</a></li>
     <li><a href="web-design.html">Web Design</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#clients">Clients</a></li>
     <li><a href="index.html#faq">FAQ</a></li>
     <li><a href="index.html#contact">Get Started</a></li>
@@ -586,25 +603,40 @@
     <p class="section-sub">A small sample of what we've put together for Whatcom County businesses.</p>
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <span class="port-icon">🍽️</span>
+        <div class="port-thumb">
+          <img src="screenshots/supons.png" alt="Supon's website" loading="lazy">
+        </div>
         <span class="port-tag">Restaurant</span>
         <h3>Supon's</h3>
         <a href="https://supons.com" target="_blank" rel="noopener">supons.com ↗</a>
         <p>A warm, welcoming site for one of Whatcom County's favorite local eateries. Built to showcase their food, hours, and story.</p>
       </div>
       <div class="portfolio-card">
-        <span class="port-icon">☁️</span>
+        <div class="port-thumb">
+          <img src="screenshots/bellinghamhosting.png" alt="Bellingham Hosting website" loading="lazy">
+        </div>
         <span class="port-tag">This Site</span>
         <h3>Bellingham Hosting</h3>
         <a href="index.html">bellinghamhosting.com ↗</a>
         <p>The very site you're looking at. Built from scratch with a custom animated sky, day/night mode, and Stripe checkout integration.</p>
       </div>
       <div class="portfolio-card">
-        <span class="port-icon">🏘️</span>
+        <div class="port-thumb">
+          <img src="screenshots/ferndalehoa.png" alt="Ferndale HOA website" loading="lazy">
+        </div>
         <span class="port-tag">Non-Profit / HOA</span>
         <h3>Ferndale HOA</h3>
         <a href="https://ferndalehoa.com" target="_blank" rel="noopener">ferndalehoa.com ↗</a>
         <p>A clean, easy-to-navigate community site keeping Ferndale residents informed and connected.</p>
+      </div>
+      <div class="portfolio-card">
+        <div class="port-thumb">
+          <img src="screenshots/pinnacle.png" alt="Pinnacle Auto Detail website" loading="lazy">
+        </div>
+        <span class="port-tag">Auto Detail</span>
+        <h3>Pinnacle Auto Detail</h3>
+        <a href="https://www.pinnacleautodetail.com" target="_blank" rel="noopener">pinnacleautodetail.com ↗</a>
+        <p>A bold, premium site for Ferndale's top auto detailing shop — built to convert serious car owners into clients.</p>
       </div>
     </div>
   </div>
@@ -622,7 +654,7 @@
   <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
   <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
   <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Daniel's LinkedIn ↗</a></p>
-  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2025 BellinghamHosting.com · <a href="index.html">bellinghamhosting.com</a></p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2026 BellinghamHosting.com · <a href="index.html">bellinghamhosting.com</a> · <a href="legal.html">Legal</a></p>
 </footer>
 
 <script>

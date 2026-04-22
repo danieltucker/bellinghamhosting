@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Not Just Use Wix or Squarespace? | Bellingham Hosting</title>
+<meta name="description" content="Honest answer: it depends. Here's what website builders get right, what they get wrong, and when it makes sense to hire a local web developer instead.">
+<link rel="canonical" href="https://bellinghamhosting.com/why-not-wix.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bellinghamhosting.com/why-not-wix.html">
+<meta property="og:title" content="Why Not Just Use Wix or Squarespace?">
+<meta property="og:description" content="Honest answer: it depends. Here's what website builders get right, what they get wrong, and when hiring a local developer makes more sense.">
+<meta property="og:image" content="https://bellinghamhosting.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Not Just Use Wix or Squarespace?">
+<meta name="twitter:description" content="Honest answer: it depends. Here's when website builders work — and when they don't.">
+<meta name="twitter:image" content="https://bellinghamhosting.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Not Just Use Wix or Squarespace?",
+  "description": "An honest comparison of website builders vs. custom web design for small businesses in Whatcom County, WA.",
+  "url": "https://bellinghamhosting.com/why-not-wix.html",
+  "publisher": {
+    "@type": "LocalBusiness",
+    "name": "Bellingham Hosting",
+    "url": "https://bellinghamhosting.com"
+  }
+}
+</script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-dark: #1a3a5c;
+    --sky-mid: #2b6cb0;
+    --sky-bright: #4299e1;
+    --sky-light: #bee3f8;
+    --sky-pale: #ebf8ff;
+    --sun-gold: #f6d860;
+    --green-solar: #48bb78;
+    --text-dark: #1a2e44;
+    --text-mid: #2d5282;
+    --text-light: #4a90b8;
+    --shadow: rgba(26,58,92,0.15);
+    --red-soft: #fed7d7;
+    --red-text: #c53030;
+    --green-soft: #c6f6d5;
+    --green-text: #276749;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--sky-pale); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,58,92,0.92); backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--sky-light); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .nav-logo span { color: var(--sun-gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a { color: var(--sky-light); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--sun-gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 60vh;
+    background: linear-gradient(180deg, #1a6fa8 0%, #2e8fd4 35%, #4daee8 65%, #87ceeb 90%, #d6eaf8 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 60px; text-align: center;
+    transition: background 1.2s ease;
+  }
+  .hero.is-night { background: linear-gradient(180deg, #020d1a 0%, #071e3d 35%, #0d3060 65%, #1a4a7a 90%, #2a6090 100%); }
+  .hero.is-night .cloud { opacity: 0.35; }
+  .clouds-layer { position: absolute; inset: 0; pointer-events: none; }
+  .cloud { position: absolute; background: white; border-radius: 50px; opacity: 0.9; }
+  .cloud::before, .cloud::after { content: ''; position: absolute; background: white; border-radius: 50%; }
+  .c1 { width: 180px; height: 55px; top: 25%; left: -200px; animation: drift1 28s linear infinite; }
+  .c1::before { width: 90px; height: 80px; top: -40px; left: 20px; }
+  .c1::after  { width: 70px; height: 65px; top: -30px; left: 80px; }
+  .c2 { width: 220px; height: 65px; top: 18%; right: -250px; animation: drift2 32s linear infinite 2s; }
+  .c2::before { width: 100px; height: 90px; top: -48px; left: 25px; }
+  .c2::after  { width: 80px; height: 70px; top: -35px; right: 25px; }
+  .c3 { width: 140px; height: 45px; top: 60%; left: -160px; animation: drift1 38s linear infinite 9s; opacity: 0.7; }
+  .c3::before { width: 70px; height: 65px; top: -32px; left: 15px; }
+  .c3::after  { width: 55px; height: 55px; top: -25px; left: 60px; }
+  @keyframes drift1 { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+  @keyframes drift2 { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
+  .stars { position: absolute; top: 0; left: 0; right: 0; height: 100%; overflow: hidden; pointer-events: none; }
+  .star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+  #sky-body { position: absolute; top: 12%; right: 10%; width: 80px; height: 80px; border-radius: 50%; transition: all 1.2s ease; }
+  #sky-body.is-sun { background: radial-gradient(circle, #fff9c4, var(--sun-gold)); box-shadow: 0 0 0 12px rgba(246,216,96,0.25), 0 0 0 24px rgba(246,216,96,0.12); animation: pulse-sun 4s ease-in-out infinite; }
+  #sky-body.is-moon { background: radial-gradient(circle at 35% 35%, #e8f4fd, #c8dff0); box-shadow: 0 0 0 10px rgba(200,223,240,0.2), 0 0 0 22px rgba(200,223,240,0.08); overflow: hidden; }
+  #sky-body.is-moon::after { content: ''; position: absolute; top: -10px; left: 12px; width: 80px; height: 80px; border-radius: 50%; background: #0d2b4e; }
+  @keyframes pulse-sun { 0%,100%{box-shadow:0 0 0 12px rgba(246,216,96,0.25),0 0 0 24px rgba(246,216,96,0.12);} 50%{box-shadow:0 0 0 18px rgba(246,216,96,0.3),0 0 0 36px rgba(246,216,96,0.15);} }
+
+  .hero-content { position: relative; z-index: 2; padding: 2rem; }
+  .hero-label { display: inline-block; background: rgba(255,255,255,0.18); color: white; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Fredoka One', cursive; font-size: clamp(2.2rem, 6vw, 3.8rem); color: white; line-height: 1.15; margin-bottom: 1rem; }
+  .hero h1 em { color: var(--sun-gold); font-style: normal; }
+  .hero-sub { font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.88); max-width: 580px; margin: 0 auto; font-weight: 600; line-height: 1.65; }
+
+  /* ─── SECTION COMMONS ─── */
+  .section-inner { max-width: 920px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-label { display: inline-block; background: var(--sky-light); color: var(--sky-dark); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Fredoka One', cursive; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--sky-dark); margin-bottom: 0.6rem; }
+  .section-sub { color: var(--text-light); font-size: 1.05rem; max-width: 640px; line-height: 1.7; margin-bottom: 2rem; }
+  .prose p { color: var(--text-mid); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+
+  /* ─── HONEST ANSWER ─── */
+  .honest { background: white; }
+  .honest-box {
+    background: linear-gradient(135deg, #e8f4fd, #dbeeff);
+    border-radius: 16px; padding: 2rem;
+    border-left: 5px solid var(--sky-mid);
+    margin-top: 1.5rem;
+  }
+  .honest-box p { color: var(--text-dark); font-size: 1.05rem; line-height: 1.75; margin-bottom: 0.8rem; }
+  .honest-box p:last-child { margin-bottom: 0; }
+  .honest-box strong { color: var(--sky-dark); }
+
+  /* ─── COST COMPARISON ─── */
+  .cost-compare { background: var(--sky-pale); }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+  .compare-col { border-radius: 16px; padding: 1.8rem; }
+  .compare-col.builder { background: white; border: 1px solid #e2e8f0; }
+  .compare-col.custom { background: linear-gradient(135deg, #ebf8ff, #dbeeff); border: 2px solid var(--sky-mid); }
+  .compare-col h3 { font-family: 'Fredoka One', cursive; font-size: 1.3rem; margin-bottom: 1.2rem; }
+  .compare-col.builder h3 { color: #4a5568; }
+  .compare-col.custom h3 { color: var(--sky-dark); }
+  .cost-line { display: flex; justify-content: space-between; align-items: center; padding: 0.55rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.92rem; }
+  .cost-line:last-of-type { border-bottom: none; }
+  .cost-line .label { color: var(--text-mid); }
+  .cost-line .amount { font-weight: 800; color: var(--text-dark); }
+  .cost-line .amount.red { color: var(--red-text); }
+  .cost-line .amount.green { color: var(--green-text); }
+  .cost-total { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid rgba(0,0,0,0.1); display: flex; justify-content: space-between; font-weight: 800; font-size: 1rem; }
+  .cost-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.6rem; font-style: italic; }
+
+  /* ─── WHAT YOU GIVE UP ─── */
+  .tradeoffs { background: white; }
+  .tradeoff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .tradeoff-card { border-radius: 14px; padding: 1.4rem; border: 1px solid; }
+  .tradeoff-card.con { background: #fff5f5; border-color: #feb2b2; }
+  .tradeoff-card.pro { background: #f0fff4; border-color: #9ae6b4; }
+  .tradeoff-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .tradeoff-card.con h3 { color: var(--red-text); }
+  .tradeoff-card.pro h3 { color: var(--green-text); }
+  .tradeoff-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
+
+  /* ─── WHEN BUILDERS ARE FINE ─── */
+  .when-fine { background: var(--sky-pale); }
+  .when-fine-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; max-width: 640px; }
+  .when-fine-item { display: flex; gap: 0.9rem; align-items: flex-start; background: white; border-radius: 12px; padding: 1rem 1.2rem; border: 1px solid var(--sky-light); }
+  .when-fine-item .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .when-fine-item p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── CTA BAND ─── */
+  .cta-band { background: var(--sun-gold); padding: 3.5rem 2rem; text-align: center; }
+  .cta-band h2 { font-family: 'Fredoka One', cursive; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--sky-dark); margin-bottom: 0.75rem; }
+  .cta-band p { color: var(--sky-dark); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.8rem; opacity: 0.8; }
+  .btn-dark { background: var(--sky-dark); color: white; font-family: 'Fredoka One', cursive; font-size: 1.1rem; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; line-height: 1; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(26,58,92,0.3); }
+  .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,58,92,0.4); }
+  .cta-band-links { margin-top: 1.2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cta-band-links a { color: var(--sky-dark); font-weight: 700; font-size: 0.95rem; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--sky-dark); color: var(--sky-light); text-align: center; padding: 2rem; font-size: 0.9rem; }
+  footer a { color: var(--sky-light); font-weight: 700; }
+  .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: white; margin-bottom: 0.5rem; }
+  .footer-logo span { color: var(--sun-gold); }
+
+  @media (max-width: 700px) {
+    nav .nav-links { display: none; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">☁️ Bellingham<span>Hosting</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="web-design.html">Web Design</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div id="sky-body" class="is-sun"></div>
+  <div class="clouds-layer">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-label">Honest Comparison</span>
+    <h1>Should You Just Use <em>Wix?</em></h1>
+    <p class="hero-sub">Fair question. Here's an honest answer — including the cases where a website builder is actually the right call.</p>
+  </div>
+</section>
+
+<!-- HONEST ANSWER -->
+<section class="honest">
+  <div class="section-inner">
+    <span class="section-label">The Short Answer</span>
+    <h2 class="section-title">It Depends — and Here's How to Tell</h2>
+    <div class="honest-box">
+      <p><strong>Wix, Squarespace, and similar builders are real tools.</strong> They're not scams, and for some use cases they're completely fine. If you're a solo freelancer who needs a simple portfolio and you enjoy tinkering with templates, go for it.</p>
+      <p>But for most small businesses — especially service-based businesses in Whatcom County trying to show up in local search results, look professional to new customers, and not spend their evenings fighting with a page editor — there are real tradeoffs worth understanding before you commit to a monthly subscription.</p>
+      <p><strong>Here's what we think you should know.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- COST COMPARISON -->
+<section class="cost-compare">
+  <div class="section-inner">
+    <span class="section-label">Real Numbers</span>
+    <h2 class="section-title">The True Cost of "Cheap"</h2>
+    <p class="section-sub">The advertised price on website builders is almost never what you'll actually pay. Here's a realistic first-year comparison.</p>
+    <div class="compare-grid">
+      <div class="compare-col builder">
+        <h3>Website Builder (e.g. Wix, Squarespace)</h3>
+        <div class="cost-line"><span class="label">Monthly plan (business tier)</span><span class="amount red">~$23–35/mo</span></div>
+        <div class="cost-line"><span class="label">Annual cost</span><span class="amount red">$276–420/yr</span></div>
+        <div class="cost-line"><span class="label">Custom domain</span><span class="amount red">$15–20/yr</span></div>
+        <div class="cost-line"><span class="label">Premium apps / features</span><span class="amount red">Often extra</span></div>
+        <div class="cost-line"><span class="label">Removing platform branding</span><span class="amount red">Higher plan required</span></div>
+        <div class="cost-line"><span class="label">Designer for customization</span><span class="amount red">Still needed</span></div>
+        <div class="cost-total"><span>Year 1 total</span><span class="red">$300–500+</span></div>
+        <div class="cost-total"><span>Year 2+</span><span class="red">$300–500/yr ongoing</span></div>
+        <p class="cost-note">Plus: you don't own the site. If you stop paying, the site disappears.</p>
+      </div>
+      <div class="compare-col custom">
+        <h3>Bellingham Hosting</h3>
+        <div class="cost-line"><span class="label">Web design (one-time)</span><span class="amount">from $200</span></div>
+        <div class="cost-line"><span class="label">Monthly hosting</span><span class="amount green">$10/mo</span></div>
+        <div class="cost-line"><span class="label">Annual hosting cost</span><span class="amount green">$120/yr</span></div>
+        <div class="cost-line"><span class="label">Custom domain</span><span class="amount green">Your choice, ~$15/yr</span></div>
+        <div class="cost-line"><span class="label">Platform branding</span><span class="amount green">None</span></div>
+        <div class="cost-line"><span class="label">Designer for customization</span><span class="amount green">That's me, $35/hr</span></div>
+        <div class="cost-total"><span>Year 1 total</span><span class="green">~$335–535</span></div>
+        <div class="cost-total"><span>Year 2+</span><span class="green">$120–135/yr ongoing</span></div>
+        <p class="cost-note">Plus: you own every file. The site is yours forever, regardless of what happens to Bellingham Hosting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADEOFFS -->
+<section class="tradeoffs">
+  <div class="section-inner">
+    <span class="section-label">What You're Actually Trading</span>
+    <h2 class="section-title">Beyond the Price Tag</h2>
+    <p class="section-sub">Cost is just one part of the picture. Here's what else changes depending on which path you take.</p>
+    <div class="tradeoff-grid">
+      <div class="tradeoff-card con">
+        <h3>You don't own your site</h3>
+        <p>With a website builder, you're renting — not buying. Stop paying, and the site goes away. Want to move to a different host? You usually can't export your site cleanly.</p>
+      </div>
+      <div class="tradeoff-card con">
+        <h3>Templates mean you look like everyone else</h3>
+        <p>Those clean Squarespace templates? Every business in your industry is using the same five. A hand-coded site looks like you, not like a theme from a marketplace.</p>
+      </div>
+      <div class="tradeoff-card con">
+        <h3>Performance takes a hit</h3>
+        <p>Website builders load a lot of unnecessary code. Slower sites rank lower in Google, and they frustrate the customers who find you. Most builder sites score poorly on Core Web Vitals.</p>
+      </div>
+      <div class="tradeoff-card con">
+        <h3>Local SEO is harder</h3>
+        <p>Getting your business to show up in Bellingham or Ferndale searches requires specific technical SEO that builders make difficult or impossible to fully control.</p>
+      </div>
+      <div class="tradeoff-card pro">
+        <h3>You own your files outright</h3>
+        <p>With a hand-coded site, you have HTML, CSS, and image files that will work anywhere, forever. No platform dependency.</p>
+      </div>
+      <div class="tradeoff-card pro">
+        <h3>You get a real person on the phone</h3>
+        <p>When something goes wrong at 8pm before a big event, you're not filing a support ticket with a company in another country. You call me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN BUILDERS ARE FINE -->
+<section class="when-fine">
+  <div class="section-inner">
+    <span class="section-label">Being Honest</span>
+    <h2 class="section-title">When a Website Builder Actually Makes Sense</h2>
+    <p class="section-sub">We'd rather help you make the right decision than sell you something you don't need.</p>
+    <div class="when-fine-list">
+      <div class="when-fine-item">
+        <span class="icon">✅</span>
+        <p><strong>You want to update your own content regularly.</strong> If you're blogging frequently or managing an online store with many products, a CMS like WordPress or a builder may be easier to self-manage than a hand-coded site.</p>
+      </div>
+      <div class="when-fine-item">
+        <span class="icon">✅</span>
+        <p><strong>You're testing an idea and not sure it'll stick.</strong> If you need something online fast to validate a concept, a builder can get you there in a day. Once it's proven, build it right.</p>
+      </div>
+      <div class="when-fine-item">
+        <span class="icon">✅</span>
+        <p><strong>You enjoy building websites yourself.</strong> There's nothing wrong with that. A builder is a perfectly good tool if you like the process. We're here when you're done or ready to hand it off.</p>
+      </div>
+      <div class="when-fine-item">
+        <span class="icon">✅</span>
+        <p><strong>Your budget is truly zero right now.</strong> A free Wix or Google Sites page is better than nothing. When you're ready to invest, we'll be here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Ready for a Website That's Actually Yours?</h2>
+  <p>No templates. No monthly platform fees after year one. No support tickets.</p>
+  <a href="index.html#contact" class="btn-dark">Let's Talk →</a>
+  <div class="cta-band-links">
+    <a href="web-design.html">See how the build process works →</a>
+    <a href="web-presence.html">Why your business needs a website →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
+  <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
+  <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Daniel's LinkedIn ↗</a></p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2026 BellinghamHosting.com · <a href="legal.html">Legal</a></p>
+</footer>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.width = s.style.height = (Math.random() * 2.5 + 1.5) + 'px';
+    starsEl.appendChild(s);
+  }
+  function applyDayNight() {
+    const hour = new Date().getHours();
+    const isNight = hour >= 20 || hour < 6;
+    const hero = document.querySelector('.hero');
+    const skyBody = document.getElementById('sky-body');
+    if (isNight) {
+      hero.classList.add('is-night');
+      skyBody.classList.remove('is-sun');
+      skyBody.classList.add('is-moon');
+    } else {
+      hero.classList.remove('is-night');
+      skyBody.classList.remove('is-moon');
+      skyBody.classList.add('is-sun');
+    }
+  }
+  applyDayNight();
+  setInterval(applyDayNight, 60000);
+</script>
+</body>
+</html>
