@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Daniel Tucker – Bellingham Hosting | Ferndale, WA Web Developer</title>
+<meta name="description" content="Meet Daniel Tucker — the person behind Bellingham Hosting. 20 years of web experience, enterprise clients, and now focused on helping small businesses in Whatcom County get online.">
+<link rel="canonical" href="https://bellinghamhosting.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bellinghamhosting.com/about.html">
+<meta property="og:title" content="About Daniel Tucker – Bellingham Hosting">
+<meta property="og:description" content="20 years of web experience, enterprise clients, and now focused on helping small businesses in Whatcom County get a real online presence.">
+<meta property="og:image" content="https://bellinghamhosting.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Daniel Tucker – Bellingham Hosting">
+<meta name="twitter:description" content="20 years of web experience, now focused on helping small businesses in Whatcom County get online.">
+<meta name="twitter:image" content="https://bellinghamhosting.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daniel Tucker",
+  "jobTitle": "Web Developer",
+  "url": "https://bellinghamhosting.com/about.html",
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "name": "Bellingham Hosting",
+    "url": "https://bellinghamhosting.com"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ferndale",
+    "addressRegion": "WA",
+    "addressCountry": "US"
+  },
+  "sameAs": ["https://www.linkedin.com/in/daniel-tucker-7b679965/"]
+}
+</script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-dark: #1a3a5c;
+    --sky-mid: #2b6cb0;
+    --sky-bright: #4299e1;
+    --sky-light: #bee3f8;
+    --sky-pale: #ebf8ff;
+    --sun-gold: #f6d860;
+    --green-solar: #48bb78;
+    --accent-teal: #38b2ac;
+    --text-dark: #1a2e44;
+    --text-mid: #2d5282;
+    --text-light: #4a90b8;
+    --shadow: rgba(26,58,92,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--sky-pale); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,58,92,0.92); backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--sky-light); display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .nav-logo span { color: var(--sun-gold); }
+  .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  .nav-links a { color: var(--sky-light); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--sun-gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 55vh;
+    background: linear-gradient(180deg, #1a6fa8 0%, #2e8fd4 35%, #4daee8 65%, #87ceeb 90%, #d6eaf8 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 60px; text-align: center;
+    transition: background 1.2s ease;
+  }
+  .hero.is-night { background: linear-gradient(180deg, #020d1a 0%, #071e3d 35%, #0d3060 65%, #1a4a7a 90%, #2a6090 100%); }
+  .hero.is-night .cloud { opacity: 0.35; }
+  .clouds-layer { position: absolute; inset: 0; pointer-events: none; }
+  .cloud { position: absolute; background: white; border-radius: 50px; opacity: 0.9; }
+  .cloud::before, .cloud::after { content: ''; position: absolute; background: white; border-radius: 50%; }
+  .c1 { width: 180px; height: 55px; top: 28%; left: -200px; animation: drift1 28s linear infinite; }
+  .c1::before { width: 90px; height: 80px; top: -40px; left: 20px; }
+  .c1::after  { width: 70px; height: 65px; top: -30px; left: 80px; }
+  .c2 { width: 140px; height: 45px; top: 55%; left: -160px; animation: drift1 38s linear infinite 6s; opacity: 0.75; }
+  .c2::before { width: 70px; height: 65px; top: -32px; left: 15px; }
+  .c2::after  { width: 55px; height: 55px; top: -25px; left: 60px; }
+  .c3 { width: 220px; height: 65px; top: 22%; right: -250px; animation: drift2 32s linear infinite 2s; }
+  .c3::before { width: 100px; height: 90px; top: -48px; left: 25px; }
+  .c3::after  { width: 80px; height: 70px; top: -35px; right: 25px; }
+  @keyframes drift1 { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+  @keyframes drift2 { from { transform: translateX(0); } to { transform: translateX(-120vw); } }
+  .stars { position: absolute; top: 0; left: 0; right: 0; height: 100%; overflow: hidden; pointer-events: none; }
+  .star { position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%; animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+  #sky-body { position: absolute; top: 12%; right: 10%; width: 80px; height: 80px; border-radius: 50%; transition: all 1.2s ease; }
+  #sky-body.is-sun { background: radial-gradient(circle, #fff9c4, var(--sun-gold)); box-shadow: 0 0 0 12px rgba(246,216,96,0.25), 0 0 0 24px rgba(246,216,96,0.12); animation: pulse-sun 4s ease-in-out infinite; }
+  #sky-body.is-moon { background: radial-gradient(circle at 35% 35%, #e8f4fd, #c8dff0); box-shadow: 0 0 0 10px rgba(200,223,240,0.2), 0 0 0 22px rgba(200,223,240,0.08); animation: pulse-moon 6s ease-in-out infinite; overflow: hidden; }
+  #sky-body.is-moon::after { content: ''; position: absolute; top: -10px; left: 12px; width: 80px; height: 80px; border-radius: 50%; background: #0d2b4e; }
+  @keyframes pulse-sun { 0%,100%{box-shadow:0 0 0 12px rgba(246,216,96,0.25),0 0 0 24px rgba(246,216,96,0.12);} 50%{box-shadow:0 0 0 18px rgba(246,216,96,0.3),0 0 0 36px rgba(246,216,96,0.15);} }
+  @keyframes pulse-moon { 0%,100%{box-shadow:0 0 0 10px rgba(200,223,240,0.2),0 0 0 22px rgba(200,223,240,0.08);} 50%{box-shadow:0 0 0 14px rgba(200,223,240,0.25),0 0 0 30px rgba(200,223,240,0.1);} }
+
+  .hero-content { position: relative; z-index: 2; padding: 2rem; }
+  .hero-label {
+    display: inline-block; background: rgba(255,255,255,0.18);
+    color: white; font-weight: 800; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    color: white; line-height: 1.15; margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--sun-gold); font-style: normal; }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: rgba(255,255,255,0.88); max-width: 560px; margin: 0 auto;
+    font-weight: 600; line-height: 1.6;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  .section-inner { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-label {
+    display: inline-block; background: var(--sky-light);
+    color: var(--sky-dark); font-weight: 800; font-size: 0.78rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.8rem;
+  }
+  .section-title { font-family: 'Fredoka One', cursive; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--sky-dark); margin-bottom: 0.6rem; }
+  .section-sub { color: var(--text-light); font-size: 1.05rem; max-width: 600px; line-height: 1.6; margin-bottom: 2rem; }
+
+  /* ─── BIO SECTION ─── */
+  .bio { background: white; }
+  .bio-layout {
+    display: flex; gap: 3rem; align-items: flex-start;
+  }
+  .photo-placeholder {
+    width: 200px; height: 200px; flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2b6cb0, #1a3a5c);
+    color: white; font-family: 'Fredoka One', cursive; font-size: 3.5rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(26,58,92,0.25);
+  }
+  .bio-text h2 { font-family: 'Fredoka One', cursive; font-size: 1.9rem; color: var(--sky-dark); margin-bottom: 0.3rem; }
+  .bio-text .bio-role { color: var(--text-light); font-weight: 700; font-size: 1rem; margin-bottom: 1.2rem; }
+  .bio-text p { color: var(--text-mid); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+  .bio-text a { color: var(--sky-mid); font-weight: 700; text-decoration: none; }
+  .bio-text a:hover { text-decoration: underline; }
+
+  /* ─── CREDENTIALS ─── */
+  .credentials { background: var(--sky-pale); }
+  .cred-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .cred-card {
+    background: white; border-radius: 14px;
+    padding: 1.4rem 1.2rem; text-align: center;
+    box-shadow: 0 2px 12px var(--shadow);
+    border: 1px solid rgba(190,227,248,0.5);
+  }
+  .cred-number { font-family: 'Fredoka One', cursive; font-size: 2.4rem; color: var(--sky-mid); line-height: 1; margin-bottom: 0.3rem; }
+  .cred-label { font-size: 0.9rem; color: var(--text-mid); font-weight: 700; }
+
+  /* ─── ENTERPRISE ─── */
+  .enterprise { background: white; }
+  .enterprise-text { max-width: 680px; }
+  .enterprise-text p { color: var(--text-mid); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+  .client-chips { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .client-chip {
+    background: var(--sky-pale); border: 1px solid var(--sky-light);
+    color: var(--sky-dark); font-weight: 800; font-size: 0.9rem;
+    padding: 0.45rem 1.1rem; border-radius: 50px;
+  }
+
+  /* ─── MISSION ─── */
+  .mission { background: linear-gradient(135deg, #e8f4fd 0%, #dbeeff 100%); }
+  .mission-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .mission-card {
+    background: white; border-radius: 14px;
+    padding: 1.5rem; border: 1px solid rgba(190,227,248,0.6);
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .mission-card-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+  .mission-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: var(--sky-dark); margin-bottom: 0.4rem; }
+  .mission-card p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── CTA BAND ─── */
+  .cta-band {
+    background: var(--sun-gold); padding: 3.5rem 2rem; text-align: center;
+  }
+  .cta-band h2 { font-family: 'Fredoka One', cursive; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--sky-dark); margin-bottom: 0.75rem; }
+  .cta-band p { color: var(--sky-dark); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.8rem; opacity: 0.8; }
+  .btn-dark { background: var(--sky-dark); color: white; font-family: 'Fredoka One', cursive; font-size: 1.1rem; padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; line-height: 1; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(26,58,92,0.3); }
+  .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,58,92,0.4); }
+  .cta-band-links { margin-top: 1.2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .cta-band-links a { color: var(--sky-dark); font-weight: 700; font-size: 0.95rem; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--sky-dark); color: var(--sky-light); text-align: center; padding: 2rem; font-size: 0.9rem; }
+  footer a { color: var(--sky-light); font-weight: 700; }
+  .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: white; margin-bottom: 0.5rem; }
+  .footer-logo span { color: var(--sun-gold); }
+
+  @media (max-width: 700px) {
+    nav .nav-links { display: none; }
+    .bio-layout { flex-direction: column; align-items: center; text-align: center; }
+    .photo-placeholder { width: 160px; height: 160px; font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">☁️ Bellingham<span>Hosting</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#why">Why Us</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="web-design.html">Web Design</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div id="sky-body" class="is-sun"></div>
+  <div class="clouds-layer">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-label">The Person Behind the Site</span>
+    <h1>Hi, I'm <em>Daniel.</em></h1>
+    <p class="hero-sub">20 years of building for the web. Now focused on one thing: helping small businesses in Whatcom County get online without the runaround.</p>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio">
+  <div class="section-inner">
+    <div class="bio-layout">
+      <div class="photo-placeholder">DT</div>
+      <div class="bio-text">
+        <h2>Daniel Tucker</h2>
+        <p class="bio-role">Web Developer · Ferndale, WA</p>
+        <p>I've been building things for the web for over 20 years — starting back when websites were hand-coded in Notepad and viewed on dial-up connections. A lot has changed since then, but the core of the job is the same: understand what someone needs, and build something that delivers it.</p>
+        <p>I'm based in Ferndale, WA. I host everything locally on solar-powered hardware. When you call or email, you get me — not a support ticket queue or an offshore team. That's by design.</p>
+        <p>
+          <a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials">
+  <div class="section-inner">
+    <span class="section-label">By the Numbers</span>
+    <h2 class="section-title">Experience That's Hard to Fake</h2>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-number">20+</div>
+        <div class="cred-label">Years building for the web</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-number">3</div>
+        <div class="cred-label">Fortune 500 enterprise clients</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-number">100%</div>
+        <div class="cred-label">Solar-powered hosting</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-number">1</div>
+        <div class="cred-label">Person you'll ever deal with</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE BACKGROUND -->
+<section class="enterprise">
+  <div class="section-inner">
+    <span class="section-label">Background</span>
+    <h2 class="section-title">Enterprise Experience, Local Focus</h2>
+    <div class="enterprise-text">
+      <p>Before Bellingham Hosting, I worked on large-scale web projects for some of the biggest names in tech. That experience taught me how to build things that hold up — fast, clean, and built to last — without the enterprise price tag.</p>
+      <p>These days I take what I learned in those big environments and apply it to the small businesses that actually need it. A local restaurant or family-owned shop shouldn't get a worse website than a Fortune 500. They just need it at a price that makes sense.</p>
+    </div>
+    <div class="client-chips">
+      <span class="client-chip">Microsoft</span>
+      <span class="client-chip">Sony</span>
+      <span class="client-chip">Adobe</span>
+      <span class="client-chip">Whatcom County Small Businesses</span>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="section-inner">
+    <span class="section-label">Why Bellingham Hosting</span>
+    <h2 class="section-title">What I Actually Care About</h2>
+    <p class="section-sub">Bellingham Hosting isn't a hustle — it's a deliberate choice to do this work in a way that feels right.</p>
+    <div class="mission-cards">
+      <div class="mission-card">
+        <div class="mission-card-icon">☕</div>
+        <h3>Real Relationships</h3>
+        <p>I meet clients for coffee before I write a line of code. I want to understand your business, not just your requirements. That makes for better websites and better outcomes.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">☀️</div>
+        <h3>Solar-Powered Hosting</h3>
+        <p>Your site runs on solar power, and 1.5% of every hosting payment goes to carbon removal via Stripe Climate. It's a small thing, but I think it matters.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">📍</div>
+        <h3>Genuinely Local</h3>
+        <p>I live here. I shop at the same stores my clients do. When your site is down, I care — not because of an SLA, but because I know it affects your livelihood.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">🔑</div>
+        <h3>You Own Everything</h3>
+        <p>Your files are yours. Your domain is yours. If you ever want to move on, I'll hand everything over with no friction. That's not a policy — it's just the right way to do business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Let's Start With a Coffee ☕</h2>
+  <p>Free consultation, no commitment. Just a conversation about what you need.</p>
+  <a href="index.html#contact" class="btn-dark">Get in Touch →</a>
+  <div class="cta-band-links">
+    <a href="web-design.html">See how the web design process works →</a>
+    <a href="index.html#pricing">View hosting plans →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">☁️ Bellingham<span>Hosting</span></div>
+  <p>Hosted in Ferndale, WA · Powered by the Sun · Serving Whatcom County</p>
+  <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Daniel's LinkedIn ↗</a></p>
+  <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2026 BellinghamHosting.com · <a href="legal.html">Legal</a></p>
+</footer>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 4 + 's';
+    s.style.width = s.style.height = (Math.random() * 2.5 + 1.5) + 'px';
+    starsEl.appendChild(s);
+  }
+  function applyDayNight() {
+    const hour = new Date().getHours();
+    const isNight = hour >= 20 || hour < 6;
+    const hero = document.querySelector('.hero');
+    const skyBody = document.getElementById('sky-body');
+    if (isNight) {
+      hero.classList.add('is-night');
+      skyBody.classList.remove('is-sun');
+      skyBody.classList.add('is-moon');
+    } else {
+      hero.classList.remove('is-night');
+      skyBody.classList.remove('is-moon');
+      skyBody.classList.add('is-sun');
+    }
+  }
+  applyDayNight();
+  setInterval(applyDayNight, 60000);
+</script>
+</body>
+</html>
