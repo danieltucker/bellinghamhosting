@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>North Line Towing · 24/7 Tow Truck, Whatcom County WA · 360-778-9869</title>
+<meta name="description" content="24/7 emergency towing and roadside assistance across Whatcom County. One call. Call 360-778-9869.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:#0B0B0C;color:#E4E4E8;font-family:'Barlow Condensed',system-ui,sans-serif;-webkit-text-size-adjust:100%;padding-bottom:80px}
+  @media(min-width:960px){body{padding-bottom:0}}
+  a{color:#FFD400;text-decoration:none}a:hover{color:#FFF}
+  img{display:block;max-width:100%}
+  h1,h2,h3{margin:0;font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-weight:400;letter-spacing:.005em}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+  @media(min-width:900px){.wrap{padding:0 40px}}
+  .stripe{height:9px;background:repeating-linear-gradient(135deg,#FFD400 0 20px,#0B0B0C 20px 40px)}
+  header{border-bottom:1px solid #1E1E20;position:relative;z-index:5}
+  .hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+  .logo{display:block}
+  .logo b{display:block;font-family:Anton,sans-serif;font-size:clamp(19px,5vw,26px);color:#FFD400;line-height:1}
+  .logo span{font-size:clamp(13px,3.4vw,20px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#7C7C80}
+  .hdr-call{display:none;font-family:Anton,sans-serif;font-size:22px;color:#0B0B0C;background:#FFD400;padding:9px 20px;border-radius:2px;white-space:nowrap}
+  .hdr-call:hover{background:#FFF;color:#0B0B0C}
+  @media(min-width:760px){.hdr-call{display:block}}
+  .hero{position:relative;isolation:isolate;overflow:hidden;padding:44px 0 46px}
+  @media(min-width:900px){.hero{padding:96px 0 84px}}
+  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.28}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(130% 100% at 20% 40%,rgba(11,11,12,.86) 0,rgba(11,11,12,.97) 65%)}
+  .hero-in{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+  @media(min-width:900px){.hero-in{gap:30px}}
+  .live{display:flex;align-items:center;gap:10px;background:#FFD400;padding:8px 15px;border-radius:2px;font-size:clamp(14px,3.8vw,17px);font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#0B0B0C}
+  .dot{width:9px;height:9px;border-radius:50%;background:#0B0B0C;animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  @media(prefers-reduced-motion:reduce){.dot{animation:none}}
+  .hero h1{font-size:clamp(52px,14vw,120px);line-height:.88;color:#FFF;max-width:900px}
+  .hero p{margin:0;font-size:clamp(20px,5.2vw,27px);font-weight:500;line-height:1.35;color:#B4B4B8;max-width:640px;text-wrap:pretty}
+  .bigcall{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:#FFD400;padding:18px 32px;border-radius:3px;width:100%;min-height:84px;text-align:center}
+  .bigcall:hover{background:#FFF}
+  @media(min-width:620px){.bigcall{width:auto;align-items:flex-start;padding:22px 40px}}
+  .bigcall small{font-size:clamp(15px,3.8vw,18px);font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:rgba(11,11,12,.62)}
+  .bigcall strong{font-family:Anton,sans-serif;font-size:clamp(38px,9.5vw,62px);font-weight:400;line-height:1;color:#0B0B0C}
+  .three{display:grid;gap:2px;background:#1E1E20}
+  @media(min-width:860px){.three{grid-template-columns:repeat(3,1fr)}}
+  .three>div{padding:30px 20px;background:#141416}
+  @media(min-width:900px){.three>div{padding:44px 34px}}
+  .three>div:hover{background:#1A1A1D}
+  .three .k{font-family:Anton,sans-serif;font-size:14px;letter-spacing:.16em;color:#FFD400;margin-bottom:13px}
+  .three h3{font-size:clamp(28px,7vw,34px);line-height:1.02;color:#FFF;margin-bottom:10px}
+  .three p{margin:0;font-size:clamp(18px,4.6vw,20px);font-weight:500;line-height:1.4;color:#8A8A8F;text-wrap:pretty}
+  section{padding:44px 0}
+  @media(min-width:900px){section{padding:72px 0}}
+  section h2{font-size:clamp(30px,8vw,46px);color:#FFF;line-height:1;margin-bottom:22px}
+  @media(min-width:900px){section h2{margin-bottom:32px}}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+  .tags li{padding:12px 18px;border:1.5px solid #34343A;border-radius:2px;font-size:clamp(17px,4.4vw,23px);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#E4E4E8}
+  .tags li:first-child{background:#FFD400;border-color:#FFD400;color:#0B0B0C;font-weight:700}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#1E1E20;border-top:1px solid #1E1E20}
+  @media(min-width:900px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stats>div{padding:24px 20px;background:#0B0B0C}
+  @media(min-width:900px){.stats>div{padding:34px 30px}}
+  .stats b{display:block;font-family:Anton,sans-serif;font-size:clamp(28px,7vw,40px);color:#FFD400;line-height:1}
+  .stats span{font-size:clamp(15px,3.8vw,19px);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#7C7C80}
+  .cov{background:#141416}
+  .cov-grid{display:grid}
+  @media(min-width:900px){.cov-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}}
+  .cov-txt{padding:40px 0}
+  @media(min-width:900px){.cov-txt{padding:68px 40px 68px 0}}
+  .cov .k{font-family:Anton,sans-serif;font-size:14px;letter-spacing:.16em;color:#FFD400;margin-bottom:14px}
+  .cov h2{font-size:clamp(30px,7.4vw,44px);margin-bottom:16px}
+  .cov p{margin:0 0 22px;font-size:clamp(19px,4.8vw,22px);font-weight:500;line-height:1.45;color:#8A8A8F;max-width:440px;text-wrap:pretty}
+  .cov .ask{display:inline-block;font-family:Anton,sans-serif;font-size:clamp(17px,4.2vw,20px);color:#FFD400;border-bottom:2px solid #FFD400;padding-bottom:3px}
+  .cov .ask:hover{color:#FFF;border-color:#FFF}
+  .cov-img{position:relative;min-height:230px}
+  .cov-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  @media(max-width:899px){.cov-img{margin:0 -20px}}
+  .final{background:#FFD400;color:#0B0B0C;padding:44px 0}
+  @media(min-width:900px){.final{padding:74px 0}}
+  .final-in{display:flex;flex-direction:column;gap:20px}
+  @media(min-width:960px){.final-in{flex-direction:row;align-items:center;justify-content:space-between;gap:40px}}
+  .final h2{font-size:clamp(38px,10vw,60px);color:#0B0B0C;line-height:.95}
+  .final p{margin:10px 0 0;font-size:clamp(19px,4.8vw,24px);font-weight:600;color:rgba(11,11,12,.68)}
+  .final-r{display:flex;flex-direction:column;gap:12px}
+  @media(min-width:960px){.final-r{align-items:flex-end}}
+  .final-r a:first-child{display:flex;align-items:center;justify-content:center;min-height:74px;background:#0B0B0C;border-radius:3px;font-family:Anton,sans-serif;font-size:clamp(32px,8vw,50px);color:#FFD400;padding:0 24px}
+  .final-r a:first-child:hover{background:#000;color:#FFF}
+  @media(min-width:960px){.final-r a:first-child{background:none;min-height:0;padding:0;color:#0B0B0C;font-size:56px}.final-r a:first-child:hover{background:none;color:#3B3B00}}
+  .final-r a+a{font-size:clamp(17px,4.2vw,21px);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(11,11,12,.7);word-break:break-all}
+  .final-r a+a:hover{color:#0B0B0C}
+  footer{padding:34px 0;font-size:clamp(16px,4vw,19px);font-weight:500;line-height:1.65;color:#6E6E73}
+  .f-grid{display:flex;flex-direction:column;gap:16px}
+  @media(min-width:760px){.f-grid{flex-direction:row;justify-content:space-between;gap:40px}.f-grid div+div{text-align:right}}
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:8px;padding:9px 14px calc(9px + env(safe-area-inset-bottom));background:rgba(11,11,12,.97);border-top:1px solid #1E1E20;backdrop-filter:blur(8px)}
+  .callbar a:first-child{flex:1;display:flex;align-items:center;justify-content:center;min-height:54px;background:#FFD400;color:#0B0B0C;border-radius:3px;font-family:Anton,sans-serif;font-size:22px}
+  .callbar a:last-child{width:84px;display:flex;align-items:center;justify-content:center;min-height:54px;border:1.5px solid #34343A;color:#E4E4E8;border-radius:3px;font-size:15px;font-weight:700;letter-spacing:.08em}
+  @media(min-width:960px){.callbar{display:none}}
+
+  .backbar{background:#141416;border-bottom:1px solid #1E1E20}
+  .backbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 20px;min-height:50px}
+  @media(min-width:900px){.backbar .wrap{padding:9px 40px}}
+  .backbar a{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#B4B4B8}
+  .backbar a:hover{color:#FFD400}
+  .backbar b{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C61}
+  @media(max-width:520px){.backbar b{display:none}}
+  .nextnav{border-top:1px solid rgba(255,255,255,.08);padding:26px 0 34px;background:#0B0B0C}
+  .nextnav .wrap{display:flex;flex-direction:column;gap:12px}
+  @media(min-width:700px){.nextnav .wrap{flex-direction:row;align-items:center;justify-content:space-between;gap:20px}}
+  .nextnav .lbl{font-family:Archivo,system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5C6065}
+  .nextnav .lnks{display:flex;flex-wrap:wrap;gap:9px}
+  .nextnav .lnks a{display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid rgba(255,255,255,.18);border-radius:6px;font-family:Archivo,system-ui,sans-serif;font-size:14.5px;font-weight:700;color:#E4E4E8}
+  .nextnav .lnks a:hover{border-color:#F2A100;color:#F2A100}
+  .nextnav .lnks a.home{background:#F2A100;border-color:#F2A100;color:#141517}
+  .nextnav .lnks a.home:hover{background:#FFB524;color:#141517}
+</style>
+</head>
+<body>
+<div class="backbar"><div class="wrap">
+  <a href="index.html">← All three options</a>
+  <b>Concept 1C · Urgent</b>
+</div></div>
+<div class="stripe"></div>
+<header>
+  <div class="wrap hdr">
+    <a class="logo" href="#top"><b>NORTH LINE</b><span>TOWING</span></a>
+    <a class="hdr-call" href="tel:+13607789869">CALL 360-778-9869</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <img src="photos/front-wide.jpg" alt="North Line Towing flatbed tow truck">
+  <div class="wrap hero-in">
+    <div class="live"><span class="dot"></span>Someone is awake right now</div>
+    <h1>Don't wait on<br>the roadside.</h1>
+    <p>24/7 emergency towing and roadside assistance across every mile of Whatcom County. One number, one truck, one straight price.</p>
+    <a class="bigcall" href="tel:+13607789869"><small>Tap to call · 24 hours</small><strong>360-778-9869</strong></a>
+  </div>
+</div>
+
+<div class="three">
+  <div><div class="k">EMERGENCY</div><h3>Tow me now</h3><p>Crashed, dead, stuck or in a ditch. Anywhere in the county, any hour. Call and we roll.</p></div>
+  <div><div class="k">SCHEDULED</div><h3>Move a vehicle</h3><p>Auction buys, shop runs, project cars. Planned tows go beyond the county line — free quote first.</p></div>
+  <div><div class="k">ROADSIDE</div><h3>Smaller problem</h3><p>Lockouts, jump starts, tire changes, gas delivery. Cheaper than a tow, and often all you need.</p></div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Every service, one call</h2>
+    <ul class="tags">
+      <li>24/7 emergency towing</li>
+      <li>Planned &amp; long-distance tows</li>
+      <li>Car lockouts</li>
+      <li>Jump starts</li>
+      <li>Tire replacement</li>
+      <li>Gas delivery</li>
+      <li>Winch-outs &amp; recovery</li>
+    </ul>
+  </div>
+</section>
+
+<div class="stats">
+  <div><b>24/7</b><span>Always answering</span></div>
+  <div><b>$1M</b><span>Liability insured</span></div>
+  <div><b>DOT</b><span>USDOT 7188992</span></div>
+  <div><b>LOCAL</b><span>Family-run, Blaine WA</span></div>
+</div>
+
+<div class="cov">
+  <div class="wrap cov-grid">
+    <div class="cov-txt">
+      <div class="k">WHERE WE GO</div>
+      <h2>Whatcom County,<br>end to end</h2>
+      <p>Bellingham to Blaine, Lynden to Glacier — emergency calls anywhere in the county around the clock. Planned tows reach into the surrounding counties.</p>
+      <a class="ask" href="tel:+13607789869">NOT SURE IF YOU'RE IN RANGE? CALL AND ASK →</a>
+    </div>
+    <div class="cov-img"><img src="photos/side-wide.jpg" alt="North Line Towing truck on a local road"></div>
+  </div>
+</div>
+
+<div class="final">
+  <div class="wrap final-in">
+    <div>
+      <h2>One call.<br>We're on it.</h2>
+      <p>Free quotes · upfront pricing · no surprise fees</p>
+    </div>
+    <div class="final-r">
+      <a href="tel:+13607789869">360-778-9869</a>
+      <a href="mailto:northlinetowingpnw@gmail.com">northlinetowingpnw@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="stripe"></div>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>NORTH LINE TOWING<br>3836 H Street Rd, Blaine, WA 98230</div>
+    <div>USDOT No. 7188992 · UBI 606245666-001-0001<br>$1,000,000 liability insured · © 2026</div>
+  </div>
+</footer>
+
+<div class="nextnav"><div class="wrap">
+  <div class="lbl">Comparing concepts?</div>
+  <div class="lnks">
+    <a class="home" href="index.html">← All three options</a>
+    <a href="option-1a-rugged.html">1A · Rugged</a>
+    <a href="option-1b-professional.html">1B · Professional</a>
+    <a href="options-brief.html">Read the brief</a>
+  </div>
+</div></div>
+
+<div class="callbar">
+  <a href="tel:+13607789869">CALL NOW</a>
+  <a href="mailto:northlinetowingpnw@gmail.com">EMAIL</a>
+</div>
+</body>
+</html>
