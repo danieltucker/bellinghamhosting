@@ -450,6 +450,30 @@
   }
   .footer-logo span { color: var(--sun-gold); }
 
+  /* ─── SCREENSHOT LIGHTBOX ─── */
+  .port-thumb img { cursor: zoom-in; }
+  .lightbox {
+    border: none; padding: 0; background: transparent;
+    max-width: 94vw; max-height: 94vh; overflow: visible;
+  }
+  .lightbox::backdrop { background: rgba(10, 22, 40, 0.85); }
+  .lightbox img {
+    display: block;
+    max-width: 94vw; max-height: calc(94vh - 3rem);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: zoom-out;
+  }
+  .lightbox-caption { text-align: center; margin-top: 0.75rem; }
+  .lightbox-caption a { color: white; font-weight: 700; text-decoration: none; }
+  .lightbox-close {
+    position: absolute; top: 0.6rem; right: 0.6rem;
+    width: 2.2rem; height: 2.2rem; border-radius: 50%;
+    border: none; background: white; color: var(--sky-dark);
+    font-size: 1.4rem; line-height: 1; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 700px) {
     nav .nav-links { display: none; }
@@ -642,10 +666,10 @@
         <div class="port-thumb">
           <img src="screenshots/newt.png" alt="Newt website" loading="lazy">
         </div>
-        <span class="port-tag">Software</span>
+        <span class="port-tag">News Reader</span>
         <h3>Newt</h3>
         <a href="https://newt.page" target="_blank" rel="noopener">newt.page ↗</a>
-        <p>A new tab page that opens onto what you actually want to read: your feeds, bookmarks, notes and the people you follow.</p>
+        <p>A news reader that puts your feeds, reading list and the people you follow front and center, right in every new tab.</p>
       </div>
       <div class="portfolio-card">
         <div class="port-thumb">
@@ -674,6 +698,12 @@
   <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/in/daniel-tucker-7b679965/" target="_blank" rel="noopener">Daniel's LinkedIn ↗</a></p>
   <p style="margin-top:0.5rem;opacity:0.6;font-size:0.8rem;">© 2026 BellinghamHosting.com · <a href="index.html">bellinghamhosting.com</a> · <a href="legal.html">Legal</a></p>
 </footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Site preview">
+  <button class="lightbox-close" type="button" aria-label="Close preview">×</button>
+  <img alt="">
+  <div class="lightbox-caption"><a rel="noopener"></a></div>
+</dialog>
 
 <script>
   // Stars
@@ -706,6 +736,33 @@
   }
   applyDayNight();
   setInterval(applyDayNight, 60000);
+
+  // Screenshot lightbox: click a portfolio preview to see it larger
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxLink = lightbox.querySelector('.lightbox-caption a');
+  document.querySelectorAll('.port-thumb img').forEach(img => {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Enlarge ' + img.alt);
+    const open = () => {
+      const siteLink = img.closest('.portfolio-card').querySelector('a');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxLink.href = siteLink.href;
+      lightboxLink.target = siteLink.target;
+      lightboxLink.textContent = siteLink.textContent;
+      lightbox.showModal();
+    };
+    img.addEventListener('click', open);
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    });
+  });
+  // Close on any click except the site link
+  lightbox.addEventListener('click', e => {
+    if (!e.target.closest('.lightbox-caption a')) lightbox.close();
+  });
 </script>
 </body>
 </html>
